@@ -11,6 +11,7 @@ export class StartScene extends Component {
         core.audio.init();
         await core.config.loadAllConfigs();
         await core.language.initConfig();
+        core.wssock.Url = "ws:192.168.100.62:6006/ws";
         core.wssock.connect();
         core.scene.changeView(HallView);
     }
