@@ -1,8 +1,10 @@
 import { _decorator, Component, Node } from 'cc';
+import core, { DlgResource } from 'db://assets/framework/scripts/GameCore';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameView')
-export class GameView extends Component {
+@DlgResource("prefab/game/gameView", "game_baccarat")
+export class GameView extends core.UIView {
     start() {
 
     }
@@ -11,4 +13,5 @@ export class GameView extends Component {
         
     }
 }
-
+
+
