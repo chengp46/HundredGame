@@ -164,7 +164,7 @@ export class SceneManager {
         // 设置设计分辨率
         const designSize = view.getDesignResolutionSize();
         console.log(`设计分辨率: ${designSize.width} x ${designSize.height}`);
-        view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.NO_BORDER);
+        view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.SHOW_ALL);
 
         // 背景层
         this.backgroundLayer = new Node("BackgroundLayer");

@@ -36,13 +36,11 @@ export class WsClient {
         };
 
         this.ws.onmessage = (e) => {
-            switch (e.data.msg_id) {
-                case "login_resp":
-                    console.log("login message:", e.data);
-                    break;
-                default:
-                    console.log("WS message:", e.data);
+            const data = JSON.parse(e.data);
+            if (data.msg_id == "heartbeat_resp") {
+                return;
             }
+            core.message.dispatchEvent(data.msg_id, data);
         };
 
         this.ws.onerror = () => {

@@ -127,6 +127,8 @@ export class MessageManager {
         let eventBin = eds[i];
         eventBin.listener.call(eventBin.object, event, ...args);
       }
+    } else {
+      log(`没有找到${event} 事件....`);
     }
   }
 }

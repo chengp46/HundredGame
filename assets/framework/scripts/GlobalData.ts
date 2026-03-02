@@ -1,6 +1,8 @@
 
 export class UserInfo {
-
+    account: string;
+    bonus_credits: number;
+    real_money: number;
 }
 
 export class GlobalData {
