@@ -6,16 +6,14 @@ const { ccclass, property } = _decorator;
 @DlgResource("prefab/game/gameView", "game_baccarat")
 export class GameView extends core.UIView {
     start() {
-        core.message.on("BetItemClick", this.onBetItemCallback, this);
+        
     }
 
     protected onDestroy(): void {
         core.message.offAll(this)
     }
 
-    onBetItemCallback(event: string, node: Node, areaId: number) {
-        core.log.info(node, areaId);
-    }
+
 }
 
 
