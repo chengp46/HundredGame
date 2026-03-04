@@ -16,6 +16,10 @@ export class GameView extends core.UIView {
 
     start() {
         core.message.on("bet_push", this.onBetPush, this);
+        core.message.on("phase_change_push", this.onPhaseChangePush, this);
+        core.message.on("enter_room_resp", this.onEnterRoomResp, this);
+        core.message.on("leave_room_resp", this.onLeaveRoomResp, this);
+        core.message.on("roads_resp", this.onRoadsResp, this);
     }
 
     protected onDestroy(): void {
@@ -25,6 +29,28 @@ export class GameView extends core.UIView {
     onBetPush(event: string, data: any) {
 
     }
+
+    // 阶段信息变更推送
+    onPhaseChangePush(event: string, data: any) {
+
+    }
+
+     // 进入房间
+    onEnterRoomResp(event: string, data: any) {
+
+    }
+
+    // 离开房间
+    onLeaveRoomResp(event: string, data: any) {
+
+    }
+
+     // 大厅路单
+    onRoadsResp(event: string, data: any) {
+
+    }
+
+    
 
 }
 
