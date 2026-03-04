@@ -16,6 +16,15 @@ export class Request {
     sendBettingReq(mode: number, amount: number, areaId: number) {
         core.wssock.send(JSON.stringify({ msg_id: "betting_req", mode: mode, amount: amount, zone: areaId }));
     }
+
+    leaveRoomReq() {
+        core.wssock.send(JSON.stringify({ msg_id: "leave_room_req"}));
+    }
+
+    roadsReq() {
+         core.wssock.send(JSON.stringify({ msg_id: "roads_req"}));
+    }
+    
 }
 
 export const protoReq = Request.instance;
