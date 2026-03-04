@@ -2,6 +2,7 @@ import { _decorator, Component, instantiate, Node, NodePool, Prefab, tween, v3, 
 import core from 'db://assets/framework/scripts/GameCore';
 import { ChipNode } from './ChipNode';
 import { BetItem } from './BetItem';
+import {protoReq} from '../common/Request'
 const { ccclass, property } = _decorator;
 
 @ccclass('OperratorArea')
@@ -32,6 +33,7 @@ export class OperratorArea extends Component {
 
     protected onDestroy(): void {
         core.message.offAll(this);
+        this.chipPool.clear();
     }
 
     onToggleCallback(event: Event, customEventData: string) {
@@ -53,7 +55,7 @@ export class OperratorArea extends Component {
         this.node.inverseTransformPoint(localPos, node.worldPosition);
         tween(chip).to(0.3, { position: localPos }, { easing: "quadOut" }).call(() => {
             this.chipPool.put(chip);
-            //core.wssock.send(JSON.stringify({ msg_id: "betting_req", mode: 0, amount: this.chipAmount[this.selectIndex], zone: areaId }));
+            protoReq.sendBettingReq(0, this.chipAmount[this.selectIndex], areaId);
         }).start();
     }
 
@@ -76,14 +78,16 @@ export class OperratorArea extends Component {
             tween(this.otherPlayer).by(0.1, {position: v3(-3, 3, 0)}).by(0.1, {position: v3(3, -3, 0)}).start();
             tween(chip).to(0.3, { position: localPos }, { easing: "quadOut" }).call(() => {
                 this.chipPool.put(chip);
-                //core.wssock.send(JSON.stringify({ msg_id: "betting_req", mode: 0, amount: this.chipAmount[this.selectIndex], zone: areaId }));
             }).start();
         }
     }
 
     onButtonClick(event: Event, customData: string) {
-        this.otherBet(7, 50);
+        //this.otherBet(7, 50);
+        core.message.dispatchEvent("dealcard");
     }
+
+
 
 }
 
