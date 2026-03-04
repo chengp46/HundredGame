@@ -87,7 +87,12 @@ export class OperratorArea extends Component {
         core.message.dispatchEvent("dealcard");
     }
 
-
+    setAreaBetAmount(areaId: number, playerBet: number, totalBet: number) {
+        let betItem = this.betItemArr.find(v => v.areaId == areaId);
+        if (betItem) {
+            betItem.setBetAmount(playerBet, totalBet);
+        }
+    }
 
 }
 

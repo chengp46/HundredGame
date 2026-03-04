@@ -48,13 +48,13 @@ export class DealArea extends Component {
             tween(poker).to(0.1, { position: this.playerArea.node.position, scale: new Vec3(1, 1, 1), }).call(() => {
                 poker.parent = this.playerArea.node;
                 let pokera = poker.getComponent(Poker);
-                pokera.setPoker();
+                pokera.setPoker(0, 0);
             }).start();
         } else if (1 == type) {
             tween(poker).to(0.1, { position: this.bankerArea.node.position, scale: new Vec3(1, 1, 1), }).call(() => {
                 poker.parent = this.bankerArea.node;
                 let pokera = poker.getComponent(Poker);
-                pokera.setPoker();
+                pokera.setPoker(2, 5);
             }).start();
         }
     }
