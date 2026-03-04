@@ -84,7 +84,7 @@ export class OperratorArea extends Component {
 
     onButtonClick(event: Event, customData: string) {
         //this.otherBet(7, 50);
-        core.message.dispatchEvent("dealcard");
+        //core.message.dispatchEvent("dealcard");
     }
 
     setAreaBetAmount(areaId: number, playerBet: number, totalBet: number) {
