@@ -1,10 +1,10 @@
 import { _decorator, Component, macro, Node, UITransform, Prefab, error, resources, instantiate, Button, v3, tween, Sprite, Color, isValid, size, Game, director, game, screen, view, Vec3, ResolutionPolicy, find, Canvas, Layers, Camera, gfx, renderer, Widget, SpriteFrame, UIOpacity, Size, sys, math } from 'cc';
 import { MessageMgr } from './MessageManager';
-
 import { __TYPE__, UIResource } from './Decorators';
 import { ResLoader } from './ResLoader';
 import { ImageUtil } from './utils/ImageUtil';
 import { LayerUtil } from './utils/LayerUtil';
+import { LayoutUtil } from './utils/LayoutUtil';
 const { ccclass, property } = _decorator;
 
 export enum ScreenEvent {
@@ -165,24 +165,28 @@ export class SceneManager {
         const designSize = view.getDesignResolutionSize();
         console.log(`设计分辨率: ${designSize.width} x ${designSize.height}`);
         view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.SHOW_ALL);
-
+        const canvasSize = view.getVisibleSize();
         // 背景层
         this.backgroundLayer = new Node("BackgroundLayer");
         this.backgroundLayer.parent = this.sceneNode;
-
+        this.backgroundLayer.addComponent(UITransform).contentSize = canvasSize;
+        LayoutUtil.AlignVerticalHorizontalFull(this.backgroundLayer);
         // 场景层
         this.sceneLayer = new Node("SceneView");
         this.sceneLayer.parent = this.sceneNode;
+        this.sceneLayer.addComponent(UITransform).contentSize = canvasSize;
+        LayoutUtil.AlignVerticalHorizontalFull(this.sceneLayer);
         // 弹窗层
         this.popupLayer = new Node("PopupView");
         this.popupLayer.parent = this.sceneNode;
+        this.popupLayer.addComponent(UITransform).contentSize = canvasSize;
+        LayoutUtil.AlignVerticalHorizontalFull(this.popupLayer);
         const maskNode = new Node("maskNode");
         maskNode.parent = this.popupLayer;
         maskNode.addComponent(UIOpacity).opacity = 50;
         let mask = maskNode.addComponent(Sprite);
         mask.spriteFrame = ImageUtil.createPureColorSpriteFrame(Color.BLACK);
         mask.sizeMode = 0;
-        const canvasSize = view.getVisibleSize();
         maskNode.getComponent(UITransform).contentSize = canvasSize;
         const textureSize = mask.spriteFrame.originalSize;
         const scaleX = canvasSize.width / textureSize.width;
@@ -194,15 +198,15 @@ export class SceneManager {
         // 最顶层
         this.topLayer = new Node("TopView");
         this.topLayer.parent = this.sceneNode;
+        this.topLayer.addComponent(UITransform).contentSize = canvasSize;
+        LayoutUtil.AlignVerticalHorizontalFull(this.topLayer);
         LayerUtil.setNodeLayer(LayerUtil.UI_2D, this.topLayer);
         if (!this.bGlobalEvent) {
             this.bGlobalEvent = true;
-
             // 切换到前台事件
             game.on(Game.EVENT_SHOW, () => {
                 MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, true);
             });
-
             // 进入后台时触发的事件
             game.on(Game.EVENT_HIDE, () => {
                 MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, false);

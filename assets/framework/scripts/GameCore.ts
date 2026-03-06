@@ -19,6 +19,7 @@ import LogManager from "./LogManager";
 import { ResLoader } from "./ResLoader";
 import { DialogResource } from "./Decorators";
 import { WsClient, WsSocket } from "./WsClient";
+import { LayoutUtil } from "./utils/LayoutUtil";
 
 export class GameCore {
     audio = AudioMgr;
@@ -43,6 +44,7 @@ export class GameCore {
     objectUtil = ObjectUtil;
     platformUtil = PlatformUtil;
     stringUtil = StringUtil;
+    layout = LayoutUtil;
     timer = Timer;  
 }
 

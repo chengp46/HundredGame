@@ -37,7 +37,7 @@ export class DealArea extends Component {
         this.pokerPool.clear();
     }
 
-    // 0:闲家 1：庄家
+    // 0:闲家 1：庄家 珠
     flyCard(type: number) {
         let poker: Node = null;
         if (this.pokerPool.size() > 0) {
@@ -60,6 +60,7 @@ export class DealArea extends Component {
     }
 
     dealCard() {
+        this.clear();
         for (let i = 0; i < 4; i++) {
             this.flyCard(i % 2);
         }
