@@ -1,4 +1,4 @@
-import core from "./GameCore";
+import core from "../GameCore";
 
 export class WsClient {
     private static _instance: WsClient;

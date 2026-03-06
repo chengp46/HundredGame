@@ -3,6 +3,7 @@
 import { _decorator, Component, AudioSource, AudioClip, Node, director, find } from 'cc';
 import { ResLoader } from './ResLoader';
 import { SceneMgr } from './SceneManager';
+
 const { ccclass, property } = _decorator;
 
 class AudioSourceItem {

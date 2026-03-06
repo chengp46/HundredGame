@@ -1,5 +1,5 @@
-import { LanguageMgr, LanguageType } from "./LanguageManager";
-import { SceneMgr, UIDialog, UIView } from "./SceneManager";
+import { LanguageMgr, LanguageType } from "./manager/LanguageManager";
+import { SceneMgr, UIDialog, UIView } from "./manager/SceneManager";
 import { ArrayUtil } from "./utils/ArrayUtil";
 import { DeviceUtil } from "./utils/DeviceUtil";
 import { ImageUtil } from "./utils/ImageUtil";
@@ -9,16 +9,16 @@ import { ObjectUtil } from "./utils/ObjectUtil";
 import { PlatformUtil } from "./utils/PlatformUtil";
 import { StringUtil } from "./utils/StringUtil";
 import { Timer } from "./utils/TimeUtils";
-import { GlobalData } from "./GlobalData";
-import { AudioMgr } from "./AudioManager";
-import { ConfigMgr } from "./ConfigManager";
-import { MessageMgr } from "./MessageManager";
-import { StorageMgr } from "./StorageManager";
-import HttpRequest, { HttpResponse } from "./HttpRequest";
-import LogManager from "./LogManager";
-import { ResLoader } from "./ResLoader";
-import { DialogResource } from "./Decorators";
-import { WsClient, WsSocket } from "./WsClient";
+import { GlobalData } from "./manager/GlobalData";
+import { AudioMgr } from "./manager/AudioManager";
+import { ConfigMgr } from "./manager/ConfigManager";
+import { MessageMgr } from "./manager/MessageManager";
+import { StorageMgr } from "./manager/StorageManager";
+import HttpRequest, { HttpResponse } from "./manager/HttpRequest";
+import LogManager from "./manager/LogManager";
+import { ResLoader } from "./manager/ResLoader";
+import { DialogResource } from "./manager/Decorators";
+import { WsClient, WsSocket } from "./manager/WsClient";
 import { LayoutUtil } from "./utils/LayoutUtil";
 
 export class GameCore {

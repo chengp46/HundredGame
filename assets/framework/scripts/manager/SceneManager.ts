@@ -2,9 +2,9 @@ import { _decorator, Component, macro, Node, UITransform, Prefab, error, resourc
 import { MessageMgr } from './MessageManager';
 import { __TYPE__, UIResource } from './Decorators';
 import { ResLoader } from './ResLoader';
-import { ImageUtil } from './utils/ImageUtil';
-import { LayerUtil } from './utils/LayerUtil';
-import { LayoutUtil } from './utils/LayoutUtil';
+import { ImageUtil } from '../utils/ImageUtil';
+import { LayerUtil } from '../utils/LayerUtil';
+import { LayoutUtil } from '../utils/LayoutUtil';
 const { ccclass, property } = _decorator;
 
 export enum ScreenEvent {
