@@ -9,6 +9,7 @@ const { ccclass, property } = _decorator;
 export class HallView extends core.UIView {
     start() {
         core.message.on("enter_room_resp", this.onEnterRoomResp, this);
+        core.speech.speak("欢迎进入游戏");
     }
 
     protected onDestroy(): void {

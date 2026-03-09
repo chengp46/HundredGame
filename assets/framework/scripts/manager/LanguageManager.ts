@@ -1,4 +1,4 @@
-import { _decorator, Component, resources, TextAsset, director, JsonAsset, SpriteFrame, Sprite, Enum, find, Node, game } from 'cc';
+import { _decorator, Component, resources, TextAsset, director, JsonAsset, SpriteFrame, Sprite, Enum, find, Node, game, Label } from 'cc';
 import { MessageMgr } from './MessageManager';
 import { ResLoader } from './ResLoader';
 import { ConfigMgr } from './ConfigManager';
@@ -90,11 +90,13 @@ export class LanguageManager {
     public static _instance: LanguageManager;
     private textData: Map<string, ILocalizedConfig> = new Map();
     private imageData: Map<string, ILocalizedImage> = new Map();
+    private labelMap: Map<string, Label> = new Map();
+    private spriteMap: Map<string, Sprite> = new Map();
     private currentLanguage = LanguageType.ZH;
 
     set CurrentLanguage(value: LanguageType) {
         this.currentLanguage = value;
-        MessageMgr.dispatchEvent("UpdateLocalized");
+        this.UpdateLocalized();
     }
 
     get CurrentLanguage() {
@@ -108,7 +110,7 @@ export class LanguageManager {
         return this._instance;
     }
 
-    public loadTxtConfig(url: string, bundle: string = "resources"): void {
+    public loadTxtConfig(url: string, bundle: string): void {
         let func = async () => {
             let data = await ResLoader.load(url, JsonAsset, bundle);
             data.json.forEach(vaule => {
@@ -118,7 +120,7 @@ export class LanguageManager {
         func();
     }
 
-    public loadImageConfig(url: string, bundle: string = "resources"): void {
+    public loadImageConfig(url: string, bundle: string): void {
         let func = async () => {
             let data = await ResLoader.load(url, JsonAsset, bundle);
             data.json.forEach(vaule => {
@@ -183,11 +185,20 @@ export class LanguageManager {
         return this.getLocalizedValue(data);
     }
 
+    public setLanguageLabel(key: string, lable: Label) {
+        if (!key || key.length === 0 || lable == null) {
+            return;
+        }
+        this.labelMap.set(key, lable);
+        lable.string = this.getText(key);
+    }
+
     // **设置精灵帧**
     public setSpriteFrame(key: string, sprite: Sprite) {
         if (!key || key.length === 0 || sprite == null) {
             return;
         }
+        this.spriteMap.set(key, sprite);
         let data = this.imageData.get(key);
         let func = async () => {
             data.path = data.path.trim();
@@ -202,6 +213,15 @@ export class LanguageManager {
             }
         };
         func();
+    }
+
+    UpdateLocalized() {
+        this.labelMap.forEach((value, key) => {
+            value.string = this.getText(key);
+        });
+        this.spriteMap.forEach((value, key)=>{
+            this.setSpriteFrame(key, value);
+        });
     }
 }
 

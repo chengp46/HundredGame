@@ -1,4 +1,4 @@
-import { _decorator, Component, macro, Node, UITransform, Prefab, error, resources, instantiate, Button, v3, tween, Sprite, Color, isValid, size, Game, director, game, screen, view, Vec3, ResolutionPolicy, find, Canvas, Layers, Camera, gfx, renderer, Widget, SpriteFrame, UIOpacity, Size, sys, math } from 'cc';
+import { _decorator, Component, macro, Node, UITransform, Prefab, error, instantiate, Button, v3, tween, Sprite, Color, isValid, size, Game, director, game, screen, view, Vec3, ResolutionPolicy, find, Canvas, Layers, Camera, gfx, renderer, Widget, SpriteFrame, UIOpacity, Size, sys, math } from 'cc';
 import { MessageMgr } from './MessageManager';
 import { __TYPE__, UIResource } from './Decorators';
 import { ResLoader } from './ResLoader';
@@ -160,11 +160,6 @@ export class SceneManager {
 
     initScene(sceneNode: Node) {
         this.sceneNode = sceneNode;
-
-        // 设置设计分辨率
-        const designSize = view.getDesignResolutionSize();
-        console.log(`设计分辨率: ${designSize.width} x ${designSize.height}`);
-        view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.SHOW_ALL);
         const canvasSize = view.getVisibleSize();
         // 背景层
         this.backgroundLayer = new Node("BackgroundLayer");
@@ -201,6 +196,12 @@ export class SceneManager {
         this.topLayer.addComponent(UITransform).contentSize = canvasSize;
         LayoutUtil.AlignVerticalHorizontalFull(this.topLayer);
         LayerUtil.setNodeLayer(LayerUtil.UI_2D, this.topLayer);
+
+        // 设置设计分辨率
+        const designSize = view.getDesignResolutionSize();
+        view.resizeWithBrowserSize(true);
+        console.log(`设计分辨率: ${designSize.width} x ${designSize.height}  ${window.innerWidth} x ${window.innerHeight}`);
+        view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.FIXED_HEIGHT);
         if (!this.bGlobalEvent) {
             this.bGlobalEvent = true;
             // 切换到前台事件
@@ -213,15 +214,59 @@ export class SceneManager {
             });
         }
 
+        screen.on('window-resize', this.onWindowResize, this);
+        window.addEventListener("resize", this.onWindowResize.bind(this));
+        screen.on('orientation-change', this.onOrientationChange, this);
+
         director.tick = (dt: number) => {
             this.cacheTick.call(director, dt * this.playSpeed);
         };
+        //this.onWindowResize(designSize.width, designSize.height);
+        // const ww = window.innerWidth;
+        // const wh = window.innerHeight;
+        // const scales = Math.min(ww / canvasSize.width, wh / canvasSize.height);
+        // const cWw = canvasSize.width * scales;
+        // const cWh = canvasSize.height * scales;
+        // let scaleYY = window.innerHeight / cWh;
+        // screen.windowSize = new Size(cWw * scaleYY, cWh * scaleYY);
     }
 
 
     // 是否横屏（Web 平台用窗口宽高判断）
     isLandscape(): boolean {
         return window.innerWidth > window.innerHeight;
+    }
+
+    curSize: Size = new Size();
+    onWindowResize(width: number, height: number) {
+        // const canvasSize = view.getVisibleSize();
+        // console.log("onWindowResize...............", this.curSize, screen.windowSize);
+        // const ww = window.innerWidth;
+        // const wh = window.innerHeight;
+        // const scales = Math.min(ww / canvasSize.width, wh / canvasSize.height);
+        // let cWidth = canvasSize.width * scales;
+        // let cHeight = canvasSize.height * scales;
+        // if (this.curSize.width == cWidth && this.curSize.height == cHeight) {
+        //     return;
+        // }
+        // this.curSize.width = cWidth;
+        // this.curSize.height = cHeight;
+        // screen.windowSize = new Size(cWidth, cHeight);
+    }
+
+    onOrientationChange(orientation: number) {
+        if (orientation === macro.ORIENTATION_LANDSCAPE_LEFT || orientation === macro.ORIENTATION_LANDSCAPE_RIGHT) {
+            console.log("Orientation changed to landscape:", orientation);
+            MessageMgr.dispatchEvent(ScreenEvent.OrientationChange, ScreenOrientation.ORIENTATION_LANDSCAPE);
+        } else {
+            console.log("Orientation changed to portrait:", orientation);
+            MessageMgr.dispatchEvent(ScreenEvent.OrientationChange, ScreenOrientation.ORIENTATION_PORTRAIT);
+        }
+    }
+
+    loadView(prefab: Prefab) {
+        const newNode = instantiate(prefab);
+        newNode.parent = this.sceneLayer;
     }
 
     changeView<T extends UIView>(viewType: __TYPE__<T>, callback?: (view: T) => T | void) {

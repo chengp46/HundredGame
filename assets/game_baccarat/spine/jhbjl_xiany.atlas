@@ -1,0 +1,62 @@
+
+jhbjl_xiany.png
+size: 1761, 850
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+a01
+  rotate: false
+  xy: 804, 59
+  size: 434, 526
+  orig: 435, 526
+  offset: 1, 0
+  index: -1
+a02
+  rotate: true
+  xy: 1240, 29
+  size: 556, 199
+  orig: 599, 220
+  offset: 42, 1
+  index: -1
+a03
+  rotate: true
+  xy: 1441, 200
+  size: 385, 294
+  orig: 462, 310
+  offset: 76, 0
+  index: -1
+a04
+  rotate: true
+  xy: 541, 2
+  size: 585, 261
+  orig: 623, 261
+  offset: 38, 0
+  index: -1
+a05
+  rotate: false
+  xy: 866, 587
+  size: 638, 261
+  orig: 638, 261
+  offset: 0, 0
+  index: -1
+a06
+  rotate: false
+  xy: 2, 51
+  size: 537, 536
+  orig: 611, 611
+  offset: 37, 37
+  index: -1
+a07
+  rotate: false
+  xy: 2, 589
+  size: 862, 259
+  orig: 874, 259
+  offset: 12, 0
+  index: -1
+guang01
+  rotate: false
+  xy: 1506, 596
+  size: 253, 252
+  orig: 277, 276
+  offset: 13, 12
+  index: -1

@@ -20,6 +20,7 @@ import { ResLoader } from "./manager/ResLoader";
 import { DialogResource } from "./manager/Decorators";
 import { WsClient, WsSocket } from "./manager/WsClient";
 import { LayoutUtil } from "./utils/LayoutUtil";
+import { SpeechMgr } from "./manager/SpeechManager";
 
 export class GameCore {
     audio = AudioMgr;
@@ -29,6 +30,7 @@ export class GameCore {
     message = MessageMgr;
     storage = StorageMgr;
     wssock = WsSocket;
+    speech = SpeechMgr;
     data = GlobalData.instance;
     languageType = LanguageType;
     UIView = UIView;

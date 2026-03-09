@@ -1,17 +1,17 @@
-// AudioSourceManager.ts
-
-import { _decorator, Component, AudioSource, AudioClip, Node, director, find } from 'cc';
+import { Node, AudioSource, AudioClip } from 'cc';
+import { AudioChannel } from './AudioChannel';
 import { ResLoader } from './ResLoader';
-import { SceneMgr } from './SceneManager';
 
-const { ccclass, property } = _decorator;
+export enum AudioChannelType {
+    BGM = 1,
+    SFX = 2,
+    SPEECH = 3
+}
 
-class AudioSourceItem {
-    sourceId: number;
-    srcPath: string;
-    bundle: string;
-    audio: AudioClip;
-    sceneId: number;
+export enum AudioPriority {
+    LOW = 1,
+    NORMAL = 2,
+    HIGH = 3
 }
 
 export interface ILocalizedAudio {
@@ -20,78 +20,53 @@ export interface ILocalizedAudio {
     name?: string;
     bLanguage?: number;
     bSex?: number;
+    bundle?: string;
 }
 
-@ccclass('AudioSourceManager')
-export class AudioSourceManager {
-    // AudioSourceManager全局实例
-    private static _instance: AudioSourceManager = null;
-    // 背景音乐 AudioSource
-    private bgmSource: AudioSource = null;
-    // 音效 AudioSource
-    private effectSource: AudioSource = null;
-    // 资源列表
-    private sourceList: AudioSourceItem[] = [];
+export class AudioManager {
+
+    private static _instance: AudioManager;
+    public static get instance() {
+        if (!this._instance) this._instance = new AudioManager();
+        return this._instance;
+    }
+
+    private _bgm: AudioChannel;
+    private _sfx: AudioChannel;
+    private _speech: AudioChannel;
+    private _root: Node;
     private mapSourceList = new Map<string, ILocalizedAudio>();
+
+    private _bgmDefaultVolume = 1;
+    private _duckVolume = 0.3;
+
     // 音效开始回调函数
     private startFunc: () => void = null;
     // 音效结束回调函数
     private endFunc: () => void = null;
 
-    public static get instance(): AudioSourceManager {
-        if (!this._instance) {
-            this._instance = new AudioSourceManager();
-        }
-        return this._instance;
-    }
+    // 初始化（在主场景挂载一个 AudioRoot 节点）
+    public init(root: Node) {
+        this._root = root;
+        const bgmSource = root.addComponent(AudioSource);
+        const sfxSource = root.addComponent(AudioSource);
+        const speechSource = root.addComponent(AudioSource);
 
-    /**
-     * 设置背景音乐音量
-     * @param volume 音量 (0 ~ 1)
-     */
-    set BGMVolume(volume: number) {
-        if (this.bgmSource) {
-            this.bgmSource.volume = volume;
-        }
-    }
+        this._bgm = new AudioChannel(bgmSource);
+        this._sfx = new AudioChannel(sfxSource);
+        this._speech = new AudioChannel(speechSource);
 
-    get BGMVolume() {
-        return this.bgmSource.volume;
-    }
-
-    /**
-     * 设置音效音量
-     * @param volume 音量 (0 ~ 1)
-     */
-    set EffectVolume(volume: number) {
-        if (this.effectSource) {
-            this.effectSource.volume = volume;
-        }
-    }
-
-    get EffectVolume() {
-        return this.effectSource.volume;
-    }
-
-
-    init() {
-        // 初始化背景音乐 AudioSource
-        this.bgmSource = SceneMgr.SceneNode.addComponent(AudioSource);
-        this.bgmSource.loop = true; // 背景音乐循环播放
-        this.bgmSource.volume = 0.5; // 设置初始音量
-
-        // 初始化音效 AudioSource
-        this.effectSource = SceneMgr.SceneNode.addComponent(AudioSource);
-        this.effectSource.loop = false; // 音效不循环
-        this.effectSource.volume = 1.0; // 设置初始音量
-
-        this.effectSource.node.on(AudioSource.EventType.STARTED, this.onAudioStarted, this);
-        this.effectSource.node.on(AudioSource.EventType.ENDED, this.onAudioEnded, this);
+        root.on(AudioSource.EventType.STARTED, this.onAudioStarted, this);
+        root.on(AudioSource.EventType.ENDED, this.onAudioEnded, this);
     }
 
     release(): void {
-        this.effectSource.node.off(AudioSource.EventType.STARTED, this.onAudioStarted, this);
-        this.effectSource.node.off(AudioSource.EventType.ENDED, this.onAudioEnded, this);
+        this._root.off(AudioSource.EventType.STARTED, this.onAudioStarted, this);
+        this._root.off(AudioSource.EventType.ENDED, this.onAudioEnded, this);
+    }
+
+    loadConfig(filePath: string, bundle: string) {
+
     }
 
     onAudioStarted() {
@@ -99,130 +74,97 @@ export class AudioSourceManager {
     }
 
     onAudioEnded() {
-        if (this.endFunc) {
-            this.endFunc();
+        this.endFunc && this.endFunc();
+    }
+
+    findAudioClip(key: string, callback: (clip: AudioClip) => void) {
+        let source = this.mapSourceList.get(key);
+        if (source) {
+            let call = async () => {
+                let audio = await ResLoader.load(source.path, AudioClip, source.bundle);
+                callback(audio);
+            };
+            call();
+        } else {
+            callback(null);
         }
     }
 
-    loadConfig(filePath: string, bundle: string = "") {
 
-    }
-
-    async register(sceneID: number, sourceId: number, srcPath: string, bundle: string = "") {
-        for (let i = 0; i < this.sourceList.length; i++) {
-            if (this.sourceList[i].sourceId == sourceId && this.sourceList[i].sceneId == sceneID) {
-                return;
+    // ======================
+    // BGM
+    // ======================
+    playBGM(key: string) {
+        this.findAudioClip(key, (clip: AudioClip) => {
+            if (clip) {
+                this._bgm.play(clip, true);
             }
-        }
-        if (0 == bundle.length) {
-            bundle = "resources";
-        }
-        let sourceItem = new AudioSourceItem();
-        sourceItem.sourceId = sourceId;
-        sourceItem.srcPath = srcPath;
-        sourceItem.bundle = bundle;
-        sourceItem.sceneId = sceneID;
-        sourceItem.audio = await ResLoader.load(sourceItem.srcPath, AudioClip, bundle);
-        this.sourceList.push(sourceItem);
+        });
     }
 
-    unregister(sceneId: number) {
-        let sList: AudioSourceItem[] = [];
-        for (let i = 0; i < this.sourceList.length; i++) {
-            if (this.sourceList[i].sceneId == sceneId) {
-                ResLoader.release(this.sourceList[i].srcPath, this.sourceList[i].bundle);
-            }
-            else {
-                sList.push(this.sourceList[i]);
-            }
-        }
-        this.sourceList = sList;
+    stopBGM() {
+        this._bgm.stop();
     }
 
-    findAudioClip(sourceId: number): AudioClip {
-        for (let i = 0; i < this.sourceList.length; i++) {
-            if (sourceId == this.sourceList[i].sourceId) {
-                return this.sourceList[i].audio;
-            }
-        }
-        return null;
+    // 设置背景音乐音量 音量 (0 ~ 1)
+    set BGMVolume(volume: number) {
+        this._bgmDefaultVolume = volume;
+        this._bgm.setVolume(volume);
     }
 
-    // 设置背景音乐
-    public async setBackgroundMusic(srcPath: string, bundle: string = "resources", callback?: () => void) {
-        this.bgmSource.clip = await ResLoader.load(srcPath, AudioClip, bundle);
-        callback && callback();
+    get BGMVolume() {
+        return this._bgm.getVolume();
     }
+
+    duckBGM() {
+        this._bgm.fadeTo(this._duckVolume, 0.3);
+    }
+
+    recoverBGM() {
+        this._bgm.fadeTo(this._bgmDefaultVolume, 0.3);
+    }
+
+    // ======================
+    // SFX
+    // ======================
 
     /**
-     * 播放背景音乐
+     * 设置音效音量
+     * @param volume 音量 (0 ~ 1)
      */
-    public playBackgroundMusic(): void {
-        if (this.bgmSource && !this.bgmSource.playing) {
-            this.bgmSource.play();
+    set EffectVolume(volume: number) {
+        if (this._sfx) {
+            this._sfx.setVolume(volume);
         }
     }
 
-    /**
-     * 暂停背景音乐
-     */
-    public pauseBackgroundMusic(): void {
-        if (this.bgmSource && this.bgmSource.playing) {
-            this.bgmSource.pause();
-        }
+    get EffectVolume() {
+        return this._sfx && this._sfx.getVolume();
     }
 
-    /**
-     * 停止背景音乐
-     */
-    public stopBackgroundMusic(): void {
-        if (this.bgmSource) {
-            this.bgmSource.stop();
-        }
-    }
-
-    /**
-     * 播放音效
-     * @param startCall  音效开始回调函数
-     * @param endCall    音效结束回调函数
-     */
-    public playEffect(sourceId: number, startCall: () => void = null, endCall: () => void = null): void {
+    playSFX(key: string, startCall: () => void = null, endCall: () => void = null) {
         this.startFunc = startCall;
         this.endFunc = endCall;
-        let effectClip = this.findAudioClip(sourceId);
-        if (this.effectSource && effectClip) {
-            this.effectSource.clip = effectClip;
-            this.effectSource.play();
-        }
+        this.findAudioClip(key, (clip: AudioClip) => {
+            if (clip) {
+                this._sfx.play(clip, false);
+            }
+        });
     }
 
-    /**
-     * 暂停音乐
-     */
-    pause() {
-        if (this.bgmSource) {
-            this.bgmSource.pause();
-        }
-    }
+    // ======================
+    // Speech
+    // ======================
 
-    /**
-     * 恢复音乐
-     */
-    public resume() {
-        if (this.bgmSource) {
-            this.bgmSource.play();
-        }
-    }
-
-    /**
-     * 停止所有音频
-     */
-    public stopAll(): void {
-        this.stopBackgroundMusic();
-        if (this.effectSource) {
-            this.effectSource.stop();
-        }
+    playSpeechClip(key: string) {
+        this.duckBGM();
+        this.findAudioClip(key, (clip: AudioClip) => {
+            this._speech.play(clip, false);
+            setTimeout(() => {
+                this.recoverBGM();
+            }, clip.getDuration() * 1000);
+        });
     }
 }
 
-export const AudioMgr = AudioSourceManager.instance;
+export const AudioMgr = AudioManager.instance;

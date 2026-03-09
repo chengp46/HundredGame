@@ -3,8 +3,8 @@ import { BeadPlate } from './BeadPlate';
 import { BigRoad } from './BigRoad';
 const { ccclass, property } = _decorator;
 
-@ccclass('ludanArea')
-export class ludanArea extends Component {
+@ccclass('LudanArea')
+export class LudanArea extends Component {
 
     @property({ type: BeadPlate, displayName: "珠盘路" })
     beadPlate: BeadPlate = null;

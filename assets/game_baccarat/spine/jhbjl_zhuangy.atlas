@@ -1,0 +1,62 @@
+
+jhbjl_zhuangy.png
+size: 1407, 1073
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+a01
+  rotate: false
+  xy: 541, 284
+  size: 434, 526
+  orig: 435, 526
+  offset: 1, 0
+  index: -1
+a02
+  rotate: true
+  xy: 1240, 427
+  size: 644, 165
+  orig: 685, 183
+  offset: 40, 1
+  index: -1
+a03
+  rotate: false
+  xy: 977, 93
+  size: 424, 332
+  orig: 511, 352
+  offset: 86, 0
+  index: -1
+a04
+  rotate: false
+  xy: 2, 2
+  size: 582, 261
+  orig: 622, 261
+  offset: 40, 0
+  index: -1
+a05
+  rotate: true
+  xy: 977, 432
+  size: 639, 261
+  orig: 639, 261
+  offset: 0, 0
+  index: -1
+a06
+  rotate: false
+  xy: 2, 265
+  size: 537, 545
+  orig: 611, 611
+  offset: 37, 37
+  index: -1
+a07
+  rotate: false
+  xy: 2, 812
+  size: 862, 259
+  orig: 874, 259
+  offset: 12, 0
+  index: -1
+guang01
+  rotate: false
+  xy: 586, 30
+  size: 253, 252
+  orig: 277, 276
+  offset: 13, 12
+  index: -1

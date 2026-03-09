@@ -1,0 +1,83 @@
+
+jhbjl_xz.png
+size: 1351, 1531
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bg_1
+  rotate: false
+  xy: 2, 937
+  size: 1217, 592
+  orig: 1306, 650
+  offset: 38, 29
+  index: -1
+bg_2
+  rotate: false
+  xy: 2, 343
+  size: 1208, 592
+  orig: 1285, 650
+  offset: 40, 29
+  index: -1
+line_Dw
+  rotate: true
+  xy: 1313, 55
+  size: 221, 31
+  orig: 239, 39
+  offset: 18, 4
+  index: -1
+line_Up
+  rotate: true
+  xy: 1313, 278
+  size: 377, 31
+  orig: 408, 39
+  offset: 31, 4
+  index: -1
+lizi01
+  rotate: true
+  xy: 1313, 657
+  size: 35, 36
+  orig: 37, 39
+  offset: 1, 1
+  index: -1
+text2_sparkblue
+  rotate: false
+  xy: 2, 4
+  size: 528, 337
+  orig: 551, 414
+  offset: 8, 3
+  index: -1
+text_1
+  rotate: true
+  xy: 1221, 1112
+  size: 417, 110
+  orig: 417, 110
+  offset: 0, 0
+  index: -1
+text_1en
+  rotate: true
+  xy: 1212, 101
+  size: 591, 99
+  orig: 591, 99
+  offset: 0, 0
+  index: -1
+text_2
+  rotate: true
+  xy: 1221, 694
+  size: 416, 108
+  orig: 416, 108
+  offset: 0, 0
+  index: -1
+text_2_spark
+  rotate: false
+  xy: 532, 103
+  size: 612, 238
+  orig: 620, 244
+  offset: 8, 0
+  index: -1
+text_2en
+  rotate: false
+  xy: 532, 2
+  size: 615, 97
+  orig: 615, 97
+  offset: 0, 0
+  index: -1

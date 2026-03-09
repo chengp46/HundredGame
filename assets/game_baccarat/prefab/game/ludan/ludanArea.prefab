@@ -74,7 +74,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Sprite",
+    "_name": "ludan_bg",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -328,7 +328,7 @@
     "fileId": "56JAVkzX1GgYtI4+BTiIMk"
   },
   {
-    "__type__": "58e42Ui7xJDcIiFD2LKq0VY",
+    "__type__": "5a1403eUflOPa47RQ/9pZAl",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -343,7 +343,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "3d+fH+bQtIGLbKYKEHWyGL"
+    "fileId": "f3aelhE2VEMamNGLLGVmVm"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -478,7 +478,7 @@
     "fileId": "c2G/VtifRIhq8dW37UE+Yo"
   },
   {
-    "__type__": "89613TG0MZOpYXnkP8LLppc",
+    "__type__": "24649atXCpAfZXyOVd7o+fU",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -497,7 +497,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "01hv03oXhMcLBk0A4zIkxi"
+    "fileId": "c8PpkAEiZKxIE25fUasYQH"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -541,30 +541,6 @@
     "fileId": "bcbmv6DQRKxoaH2grg2cxq"
   },
   {
-    "__type__": "27043VenoZLE47/Oi2TR7dY",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 27
-    },
-    "beadPlate": {
-      "__id__": 21
-    },
-    "bigRoad": {
-      "__id__": 13
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "68we1C/qlFwayRT0dP/0xT"
-  },
-  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -574,7 +550,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 29
+      "__id__": 27
     },
     "_alignFlags": 40,
     "_target": null,
@@ -599,6 +575,30 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "f7uN6L4OFB6I5L+lSMx3/G"
+  },
+  {
+    "__type__": "93fee7/fMtJWrSY6HlH2Muy",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 29
+    },
+    "beadPlate": {
+      "__id__": 21
+    },
+    "bigRoad": {
+      "__id__": 13
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "14FHojntxM+obJnv34T8/Q"
   },
   {
     "__type__": "cc.PrefabInfo",
