@@ -1,0 +1,20 @@
+[
+    {
+        "key": "baccarat_0001",
+        "zh": "庄",
+        "en": "banker",
+        "remark": "无"
+    },
+    {
+        "key": "baccarat_0002",
+        "zh": "闲",
+        "en": "player",
+        "remark": "无"
+    },
+    {
+        "key": "baccarat_0003",
+        "zh": "局ID",
+        "en": "round id",
+        "remark": "无"
+    }
+]

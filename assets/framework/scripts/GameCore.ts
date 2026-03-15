@@ -1,4 +1,3 @@
-import { LanguageMgr, LanguageType } from "./manager/LanguageManager";
 import { SceneMgr, UIDialog, UIView } from "./manager/SceneManager";
 import { ArrayUtil } from "./utils/ArrayUtil";
 import { DeviceUtil } from "./utils/DeviceUtil";
@@ -21,6 +20,7 @@ import { DialogResource } from "./manager/Decorators";
 import { WsClient, WsSocket } from "./manager/WsClient";
 import { LayoutUtil } from "./utils/LayoutUtil";
 import { SpeechMgr } from "./manager/SpeechManager";
+import { LanguageMgr, LanguageType } from "./component/LanguageManager";
 
 export class GameCore {
     audio = AudioMgr;

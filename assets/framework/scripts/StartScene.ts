@@ -1,7 +1,7 @@
-import { _decorator, Component, Node, Prefab, profiler } from 'cc';
+import { _decorator, Component, Enum, JsonAsset, Node, Prefab, profiler } from 'cc';
 import core from './GameCore';
 import { ResLoader } from './manager/ResLoader';
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 @ccclass('StartScene')
 export class StartScene extends Component {
@@ -11,7 +11,7 @@ export class StartScene extends Component {
         core.scene.initScene(this.node);
         core.audio.init(this.node);
         await core.config.loadAllConfigs();
-        await core.language.initConfig();
+        core.language.initConfig();
         core.wssock.Url = "ws:192.168.100.62:6006/ws";
         core.wssock.connect();
         this.loadHall();
@@ -35,7 +35,7 @@ export class StartScene extends Component {
         if (!bundle) {
             return;
         }
-        bundle.load("prefab/hall/hallView", Prefab, (err, asset)=>{
+        bundle.load("prefab/hall/hallView", Prefab, (err, asset) => {
             if (err) {
                 return;
             }

@@ -222,13 +222,13 @@ export class SceneManager {
             this.cacheTick.call(director, dt * this.playSpeed);
         };
         //this.onWindowResize(designSize.width, designSize.height);
-        // const ww = window.innerWidth;
-        // const wh = window.innerHeight;
-        // const scales = Math.min(ww / canvasSize.width, wh / canvasSize.height);
-        // const cWw = canvasSize.width * scales;
-        // const cWh = canvasSize.height * scales;
-        // let scaleYY = window.innerHeight / cWh;
-        // screen.windowSize = new Size(cWw * scaleYY, cWh * scaleYY);
+        const ww = window.innerWidth;
+        const wh = window.innerHeight;
+        const scales = Math.min(ww / canvasSize.width, wh / canvasSize.height);
+        const cWw = canvasSize.width * scales;
+        const cWh = canvasSize.height * scales;
+        let scaleYY = window.innerHeight / cWh;
+        screen.windowSize = new Size(cWw * scaleYY, cWh * scaleYY);
     }
 
 

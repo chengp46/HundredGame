@@ -1,0 +1,16 @@
+{
+  "__version__": "1.0.4",
+  "L10nEnable": true,
+  "ProjectConfig": {
+    "localLanguage": "en-US",
+    "scanOptions": [
+      {
+        "dirs": [
+          "game_baccarat"
+        ],
+        "extNames": [],
+        "excludes": []
+      }
+    ]
+  }
+}

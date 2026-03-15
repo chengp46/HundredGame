@@ -1,0 +1,2076 @@
+{
+    "0": {
+        "gameView-scene/should_hide_in_hierarchy/gameView/betArea": {
+            "path": "gameView-scene/should_hide_in_hierarchy/gameView/betArea",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 163.44400000000002,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 690,
+                    "height": 380,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Widget": {
+                    "left": 15,
+                    "right": 15,
+                    "top": 0,
+                    "bottom": 0
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout": {
+            "path": "Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -120,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 690,
+                    "height": 140,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 1,
+                    "spacingX": 10,
+                    "spacingY": 0
+                }
+            }
+        },
+        "Layout/Item1": {
+            "path": "Layout/Item1",
+            "active": true,
+            "position": {
+                "x": -280,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item1/button": {
+            "path": "Layout/Item1/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 215,
+                        "b": 0,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item1/Layout": {
+            "path": "Layout/Item1/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item1/Layout/betNum": {
+            "path": "Layout/Item1/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item1/Layout/name": {
+            "path": "Layout/Item1/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "幸运7",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item1/Layout/odds": {
+            "path": "Layout/Item1/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -31.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 50.044921875,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1/6:15",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item2": {
+            "path": "Layout/Item2",
+            "active": true,
+            "position": {
+                "x": -140,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item2/button": {
+            "path": "Layout/Item2/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 223,
+                        "b": 0,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item2/Layout": {
+            "path": "Layout/Item2/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item2/Layout/betNum": {
+            "path": "Layout/Item2/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item2/Layout/name": {
+            "path": "Layout/Item2/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "超幸7",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item2/Layout/odds": {
+            "path": "Layout/Item2/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -31.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 45.544921875,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:30+",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item3": {
+            "path": "Layout/Item3",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item3/button": {
+            "path": "Layout/Item3/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 165,
+                        "b": 0,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item3/Layout": {
+            "path": "Layout/Item3/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item3/Layout/betNum": {
+            "path": "Layout/Item3/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item3/Layout/name": {
+            "path": "Layout/Item3/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "幸6(2/3)",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item3/Layout/odds": {
+            "path": "Layout/Item3/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -31.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 60.0556640625,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1/12:20",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item4": {
+            "path": "Layout/Item4",
+            "active": true,
+            "position": {
+                "x": 140,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item4/button": {
+            "path": "Layout/Item4/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 165,
+                        "b": 0,
+                        "a": 51
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item4/Layout": {
+            "path": "Layout/Item4/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item4/Layout/betNum": {
+            "path": "Layout/Item4/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item4/Layout/name": {
+            "path": "Layout/Item4/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "幸6(2张)",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item4/Layout/odds": {
+            "path": "Layout/Item4/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -31.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 35.033203125,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:22",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item5": {
+            "path": "Layout/Item5",
+            "active": true,
+            "position": {
+                "x": 280,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item5/button": {
+            "path": "Layout/Item5/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 165,
+                        "b": 0,
+                        "a": 51
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item5/Layout": {
+            "path": "Layout/Item5/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 100,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item5/Layout/betNum": {
+            "path": "Layout/Item5/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item5/Layout/name": {
+            "path": "Layout/Item5/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "幸6(3张)",
+                    "fontSize": 20,
+                    "lineHeight": 20
+                }
+            }
+        },
+        "Layout/Item5/Layout/odds": {
+            "path": "Layout/Item5/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -31.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 35.033203125,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:50",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item6": {
+            "path": "Layout/Item6",
+            "active": true,
+            "position": {
+                "x": -245,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item6/button": {
+            "path": "Layout/Item6/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item6/Layout": {
+            "path": "Layout/Item6/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 84.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item6/Layout/betNum": {
+            "path": "Layout/Item6/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 32.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 40
+                }
+            }
+        },
+        "Layout/Item6/Layout/name": {
+            "path": "Layout/Item6/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 1.3400000000000034,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 22,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "闲对",
+                    "fontSize": 22,
+                    "lineHeight": 22
+                }
+            }
+        },
+        "Layout/Item6/Layout/odds": {
+            "path": "Layout/Item6/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -30.999999999999996,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 33.697265625,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:11",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item7": {
+            "path": "Layout/Item7",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 270,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item7/button": {
+            "path": "Layout/Item7/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 270,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 52,
+                        "g": 199,
+                        "b": 89,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item7/Layout": {
+            "path": "Layout/Item7/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 84.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item7/Layout/betNum": {
+            "path": "Layout/Item7/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 32.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 40
+                }
+            }
+        },
+        "Layout/Item7/Layout/name": {
+            "path": "Layout/Item7/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 1.3400000000000034,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 22,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "和",
+                    "fontSize": 22,
+                    "lineHeight": 22
+                }
+            }
+        },
+        "Layout/Item7/Layout/odds": {
+            "path": "Layout/Item7/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -30.999999999999996,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 33.697265625,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:11",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item8": {
+            "path": "Layout/Item8",
+            "active": true,
+            "position": {
+                "x": 245,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item8/button": {
+            "path": "Layout/Item8/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 120,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 51
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item8/Layout": {
+            "path": "Layout/Item8/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 200,
+                    "height": 84.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 10
+                }
+            }
+        },
+        "Layout/Item8/Layout/betNum": {
+            "path": "Layout/Item8/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 32.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 20,
+                    "lineHeight": 40
+                }
+            }
+        },
+        "Layout/Item8/Layout/name": {
+            "path": "Layout/Item8/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 1.3400000000000034,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 22,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "庄对",
+                    "fontSize": 22,
+                    "lineHeight": 22
+                }
+            }
+        },
+        "Layout/Item8/Layout/odds": {
+            "path": "Layout/Item8/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -30.999999999999996,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 33.697265625,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:11",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item9": {
+            "path": "Layout/Item9",
+            "active": true,
+            "position": {
+                "x": -175,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 140,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item9/button": {
+            "path": "Layout/Item9/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 140,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 0,
+                        "g": 102,
+                        "b": 153,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item9/Layout": {
+            "path": "Layout/Item9/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 94.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 15
+                }
+            }
+        },
+        "Layout/Item9/Layout/betNum": {
+            "path": "Layout/Item9/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 37.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 25,
+                    "lineHeight": 40
+                }
+            }
+        },
+        "Layout/Item9/Layout/name": {
+            "path": "Layout/Item9/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 1.3400000000000034,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 22,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "闲",
+                    "fontSize": 25,
+                    "lineHeight": 22
+                }
+            }
+        },
+        "Layout/Item9/Layout/odds": {
+            "path": "Layout/Item9/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -36,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 33.697265625,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "1:11",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        },
+        "Layout/Item10": {
+            "path": "Layout/Item10",
+            "active": true,
+            "position": {
+                "x": 175,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 140,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                }
+            }
+        },
+        "Layout/Item10/button": {
+            "path": "Layout/Item10/button",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 140,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Sprite": {
+                    "color": {
+                        "r": 255,
+                        "g": 68,
+                        "b": 68,
+                        "a": 50
+                    },
+                    "sizeMode": 0
+                },
+                "Button": {
+                    "interactable": true
+                }
+            }
+        },
+        "Layout/Item10/Layout": {
+            "path": "Layout/Item10/Layout",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 94.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Layout": {
+                    "type": 2,
+                    "spacingX": 0,
+                    "spacingY": 15
+                }
+            }
+        },
+        "Layout/Item10/Layout/betNum": {
+            "path": "Layout/Item10/Layout/betNum",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 37.34,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 340,
+                    "height": 20,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0/0",
+                    "fontSize": 25,
+                    "lineHeight": 40
+                }
+            }
+        },
+        "Layout/Item10/Layout/name": {
+            "path": "Layout/Item10/Layout/name",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": 1.3400000000000034,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 130,
+                    "height": 22,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "庄",
+                    "fontSize": 25,
+                    "lineHeight": 22
+                }
+            }
+        },
+        "Layout/Item10/Layout/odds": {
+            "path": "Layout/Item10/Layout/odds",
+            "active": true,
+            "position": {
+                "x": 0,
+                "y": -36,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "components": {
+                "UITransform": {
+                    "width": 70.0576171875,
+                    "height": 22.68,
+                    "anchorX": 0.5,
+                    "anchorY": 0.5
+                },
+                "Label": {
+                    "string": "0.5:1/1:1",
+                    "fontSize": 18,
+                    "lineHeight": 18
+                }
+            }
+        }
+    }
+}

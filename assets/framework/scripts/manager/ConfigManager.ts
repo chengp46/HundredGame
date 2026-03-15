@@ -1,4 +1,5 @@
 import { resources, JsonAsset } from "cc";
+import { ResLoader } from "./ResLoader";
 
 type ConfigChangeCallback = (configName: string, data: any) => void;
 
@@ -18,8 +19,9 @@ export class ConfigManager {
      * 异步加载 config 目录下所有 JSON 文件
      */
     public async loadAllConfigs(): Promise<void> {
+        let bundle = await ResLoader.getBundle("framework");
         return new Promise((resolve, reject) => {
-            resources.loadDir("config", JsonAsset, (err, assets) => {
+            bundle.loadDir("config", JsonAsset, (err, assets) => {
                 if (err) {
                     console.error("加载配置失败", err);
                     reject(err);

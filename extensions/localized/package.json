@@ -1,0 +1,106 @@
+{
+    "$schema": "./@types/schema/package/index.json",
+    "package_version": 2,
+    "name": "localized",
+    "version": "1.0.0",
+    "author": "Cocos Creator",
+    "editor": ">=3.8.5",
+    "scripts": {
+        "preinstall": "node ./scripts/preinstall.js",
+        "build": "npx tsc"
+    },
+    "description": "i18n:localized.description",
+    "main": "./dist/main.js",
+    "dependencies": {
+        "chokidar": "^4.0.3",
+        "fs-extra": "^10.0.0"
+    },
+    "devDependencies": {
+        "@cocos/creator-types": "^3.8.5",
+        "@types/fs-extra": "^9.0.5",
+        "@types/node": "^18.17.1",
+        "typescript": "^5.8.2"
+    },
+    "panels": {
+        "default": {
+            "title": "多语言面板",
+            "type": "dockable",
+            "main": "dist/panels/default",
+            "size": {
+                "min-width": 400,
+                "min-height": 300,
+                "width": 1024,
+                "height": 600
+            }
+        }
+    },
+    "contributions": {
+        "asset-db": {
+            "mount": {
+                "path": "./assets",
+                "readonly": true
+            }
+        },
+        "inspector": {
+            "section": {
+                "node": {
+                    "L10nLabel": "./dist/components/L10n-Label.js",
+                    "L10nSprite": "./dist/components/L10n-Sprite.js"
+                }
+            }
+        },
+        "menu": [
+            {
+                "path": "i18n:menu.panel/localized",
+                "label": "i18n:localized.open_panel",
+                "message": "open-panel"
+            },
+            {
+                "path": "i18n:menu.develop/localized",
+                "label": "i18n:localized.send_to_panel",
+                "message": "send-to-panel"
+            }
+        ],
+        "messages": {
+            "load-Json-Data": {
+                "public": true,
+                "description": "重新加载多语言文件Json数据",
+                "methods": [
+                    "loadResJsonData"
+                ]
+            },
+            "get-text": {
+                "public": true,
+                "description": "获取多语言文件Json数据",
+                "methods": [
+                    "getTextData"
+                ]
+            },
+            "get-Image": {
+                "public": true,
+                "description": "获取多语言图片Json数据",
+                "methods": [
+                    "getImageData"
+                ]
+            },
+            "open-panel": {
+                "methods": [
+                    "openPanel"
+                ]
+            },
+            "send-to-panel": {
+                "methods": [
+                    "default.hello"
+                ]
+            },
+            "localized:updateLanguage": {
+                "public": true,
+                "description": "更新多语言信息",
+                "methods": [
+                    "onLanguageChanged"
+                ]
+            }
+        }
+    },
+    "license": "ISC"
+}

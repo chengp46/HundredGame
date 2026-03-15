@@ -7,7 +7,7 @@ export class BetItem extends Component {
     @property({ type: Label, displayName: "下注金额" })
     betLabel: Label;
 
-    @property({ type: Number, displayName: "区域ID" })
+    @property({ displayName: "区域ID" })
     areaId: number = 0;
 
     start() {
