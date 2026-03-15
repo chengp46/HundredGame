@@ -60,13 +60,13 @@ export class DealArea extends Component {
         if (0 == type) {
             tween(poker).to(0.1, { position: this.playerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
                 poker.parent = this.playerArea.node;
-            }).delay(0.5).call(() => {
+            }).delay(1).call(() => {
                 callback && callback(card);
             }).start();
         } else if (1 == type) {
             tween(poker).to(0.1, { position: this.bankerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
                 poker.parent = this.bankerArea.node;
-            }).delay(0.5).call(() => {
+            }).delay(1).call(() => {
                 callback && callback(card);
             }).start();
         }
@@ -79,7 +79,7 @@ export class DealArea extends Component {
         }
     }
 
-    openCard(playerCard: CardData[], bankerCard: CardData[], callback: () => void) {
+    async openCard(playerCard: CardData[], bankerCard: CardData[], callback: () => void) {
         if (playerCard.length < 2 || bankerCard.length < 2) {
             return;
         }
@@ -97,7 +97,6 @@ export class DealArea extends Component {
             poker.setPoker(bankerCard[i].suit, bankerCard[i].point);
             bankerPoint += bankerCard[i].point >= 10 ? 0 : bankerCard[i].point;
         }
-
         if (playerCard.length === 2) {
             playerPoint = playerPoint % 10;
             this.playerPoint.string = playerPoint.toString();
@@ -109,11 +108,12 @@ export class DealArea extends Component {
                     callback && callback();
                 });
             } else {
+                await core.util.sleep(1);
                 this.flyCard(1, (card: Poker) => {
                     card.setPoker(bankerCard[2].suit, bankerCard[2].point);
                     bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
                     bankerPoint = bankerPoint % 10;
-                    this.playerPoint.string = bankerPoint.toString();
+                    this.bankerPoint.string = bankerPoint.toString();
                     core.speech.speak(`闲家${playerPoint}点`);
                     core.speech.speak(`庄家${bankerPoint}点`, () => {
                         callback && callback();
@@ -121,7 +121,8 @@ export class DealArea extends Component {
                 });
             }
         } else {
-            this.flyCard(0, (card: Poker) => {
+            await core.util.sleep(1);
+            this.flyCard(0, async (card: Poker) => {
                 card.setPoker(playerCard[2].suit, playerCard[2].point);
                 playerPoint += playerCard[2].point >= 10 ? 0 : playerCard[2].point;
                 playerPoint = playerPoint % 10;
@@ -135,11 +136,12 @@ export class DealArea extends Component {
                     });
                     
                 } else {
+                    await core.util.sleep(1);
                     this.flyCard(1, (card: Poker) => {
                         card.setPoker(bankerCard[2].suit, bankerCard[2].point);
                         bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
                         bankerPoint = bankerPoint % 10;
-                        this.playerPoint.string = bankerPoint.toString();
+                        this.bankerPoint.string = bankerPoint.toString();
                         core.speech.speak(`闲家${playerPoint}点`);
                         core.speech.speak(`庄家${bankerPoint}点`, ()=>{
                             callback && callback();
@@ -159,7 +161,7 @@ export class DealArea extends Component {
             this.countdown.string = this.time.toString();
             this.countdown.node.active = true;
             this.time--;
-            if (this.time <= 0) {
+            if (this.time < 0) {
                 this.countdown.node.active = false;
                 callback && callback(phase);
                 this.unscheduleAllCallbacks();

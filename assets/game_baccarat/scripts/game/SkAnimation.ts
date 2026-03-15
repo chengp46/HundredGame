@@ -32,9 +32,12 @@ export class SkAnimation extends Component {
 
     }
 
-    playAnimation(type: AnimationType) {
+    playAnimation(type: AnimationType, callback?:()=>void) {
         this.node.active = true;
         let skeleton = this.animation.getComponent(sp.Skeleton);
+        skeleton.setEndListener(()=>{
+            callback && callback();
+        });
         let animName = "";
         switch (type) {
             case AnimationType.START_BET:
@@ -69,7 +72,6 @@ export class SkAnimation extends Component {
                 break;
         } 
     }
-
 }
 
 

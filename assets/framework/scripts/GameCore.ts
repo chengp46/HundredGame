@@ -21,6 +21,7 @@ import { WsClient, WsSocket } from "./manager/WsClient";
 import { LayoutUtil } from "./utils/LayoutUtil";
 import { SpeechMgr } from "./manager/SpeechManager";
 import { LanguageMgr, LanguageType } from "./component/LanguageManager";
+import { Utils } from "./utils/Utils";
 
 export class GameCore {
     audio = AudioMgr;
@@ -47,6 +48,7 @@ export class GameCore {
     platformUtil = PlatformUtil;
     stringUtil = StringUtil;
     layout = LayoutUtil;
+    util = Utils;
     timer = Timer;  
 }
 

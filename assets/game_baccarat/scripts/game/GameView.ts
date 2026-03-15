@@ -72,11 +72,7 @@ export class GameView extends core.UIView {
     onPhaseChangePush(event: string, data: any) {
         //console.log("阶段信息变更推送:", data);
         let curTime = data.cut_off_time - Date.now();
-        this.dealArea.setCountdown(Math.floor(curTime / 1000), data.phase, (phase: number) => {
-            if (phase === 2) {
-                this.anim.playAnimation(AnimationType.STOP_BET);
-            }
-        });
+        this.dealArea.setCountdown(Math.floor(curTime / 1000), data.phase, null);
         switch (data.phase) {
             case 0: // 准备
                 this.dealArea.clear();
@@ -91,30 +87,32 @@ export class GameView extends core.UIView {
                 this.anim.playAnimation(AnimationType.START_BET);
                 break;
             case 3: // 结算
-                let playerCards: CardData[] = [];
-                for (const k in data.deal_info.player_cards) {
-                    let card = new CardData();
-                    card.point = Number(k);
-                    card.suit = data.deal_info.player_cards[k];
-                    playerCards.push(card);
-                }
-                let bankerCards: CardData[] = [];
-                for (const k in data.deal_info.banker_cards) {
-                    let card = new CardData();
-                    card.point = Number(k);
-                    card.suit = data.deal_info.banker_cards[k];
-                    bankerCards.push(card);
-                }
-                this.dealArea.openCard(playerCards, bankerCards, () => {
-                    if (data.result_type == 7) {
-                        this.anim.playAnimation(AnimationType.BANKER_WIN);
-                    } else if (data.result_type == 8) {
-                        this.anim.playAnimation(AnimationType.PLAYER_WIN);
-                    } else if (data.result_type == 9) {
-                        this.anim.playAnimation(AnimationType.TIE_WIN);
+                this.anim.playAnimation(AnimationType.STOP_BET, () => {
+                    let playerCards: CardData[] = [];
+                    for (const k in data.deal_info.player_cards) {
+                        let card = new CardData();
+                        card.point = Number(k);
+                        card.suit = data.deal_info.player_cards[k];
+                        playerCards.push(card);
                     }
+                    let bankerCards: CardData[] = [];
+                    for (const k in data.deal_info.banker_cards) {
+                        let card = new CardData();
+                        card.point = Number(k);
+                        card.suit = data.deal_info.banker_cards[k];
+                        bankerCards.push(card);
+                    }
+                    this.dealArea.openCard(playerCards, bankerCards, () => {
+                        if (data.result_type == 7) {
+                            this.anim.playAnimation(AnimationType.BANKER_WIN);
+                        } else if (data.result_type == 8) {
+                            this.anim.playAnimation(AnimationType.PLAYER_WIN);
+                        } else if (data.result_type == 9) {
+                            this.anim.playAnimation(AnimationType.TIE_WIN);
+                        }
+                    });
                 });
-                console.log("结算: ", playerCards, bankerCards, data.result_type);
+                console.log("结算: ", data);
                 break;
         }
     }
@@ -126,7 +124,7 @@ export class GameView extends core.UIView {
 
     // 大厅路单
     onRoadsResp(event: string, data: any) {
-
+        console.log("路单数据:", data);
     }
 }
 
