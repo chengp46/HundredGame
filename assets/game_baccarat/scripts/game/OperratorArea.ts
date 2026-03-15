@@ -2,7 +2,7 @@ import { _decorator, Component, instantiate, Node, NodePool, Prefab, tween, v3, 
 import core from 'db://assets/framework/scripts/GameCore';
 import { ChipNode } from './ChipNode';
 import { BetItem } from './BetItem';
-import {protoReq} from '../common/Request'
+import { protoReq } from '../common/Request'
 const { ccclass, property } = _decorator;
 
 @ccclass('OperratorArea')
@@ -41,25 +41,33 @@ export class OperratorArea extends Component {
     }
 
     onBetItemCallback(event: string, node: Node, areaId: number) {
-        let chip: Node = null;
-        if (this.chipPool.size() > 0) {
-            chip = this.chipPool.get();
-        } else {
-            chip = instantiate(this.chipPrefab);
-        }
-        let chipNode = chip.getComponent(ChipNode);
-        chipNode.setChip(this.selectIndex);
-        chip.parent = this.node;
-        let localPos = new Vec3();
-        chip.position = this.node.inverseTransformPoint(localPos, this.chipArr[this.selectIndex].worldPosition);
-        this.node.inverseTransformPoint(localPos, node.worldPosition);
-        tween(chip).to(0.3, { position: localPos }, { easing: "quadOut" }).call(() => {
-            this.chipPool.put(chip);
-            protoReq.sendBettingReq(0, this.chipAmount[this.selectIndex], areaId);
-        }).start();
+        protoReq.sendBettingReq(core.data.playType, this.chipAmount[this.selectIndex], areaId);
     }
 
-    otherBet(areaId: number, amount: number) {
+    playerBet(areaId: number, amount: number, all_role_amount: number, all_room_amount: number) {
+        let betItem = this.betItemArr.find(v => v.areaId == areaId);
+        if (betItem) {
+            let chip: Node = null;
+            if (this.chipPool.size() > 0) {
+                chip = this.chipPool.get();
+            } else {
+                chip = instantiate(this.chipPrefab);
+            }
+            let chipNode = chip.getComponent(ChipNode);
+            let index = this.chipAmount.findIndex(v => v == amount);
+            chipNode.setChip(index);
+            chip.parent = this.node;
+            let localPos = new Vec3();
+            chip.position = this.node.inverseTransformPoint(localPos, this.chipArr[this.selectIndex].worldPosition);
+            this.node.inverseTransformPoint(localPos, betItem.node.worldPosition);
+            tween(chip).to(0.3, { position: localPos }, { easing: "quadOut" }).call(() => {
+                this.chipPool.put(chip);
+                this.setAreaBetAmount(areaId, all_role_amount, all_room_amount);
+            }).start();
+        }
+    }
+
+    otherBet(areaId: number, amount: number, all_role_amount: number, all_room_amount: number) {
         let betItem = this.betItemArr.find(v => v.areaId == areaId);
         if (betItem) {
             let chip: Node = null;
@@ -75,22 +83,27 @@ export class OperratorArea extends Component {
             chip.position = this.otherPlayer.position;
             let localPos = new Vec3();
             this.node.inverseTransformPoint(localPos, betItem.node.worldPosition);
-            tween(this.otherPlayer).by(0.1, {position: v3(-3, 3, 0)}).by(0.1, {position: v3(3, -3, 0)}).start();
+            tween(this.otherPlayer).by(0.1, { position: v3(-3, 3, 0) }).by(0.1, { position: v3(3, -3, 0) }).start();
             tween(chip).to(0.3, { position: localPos }, { easing: "quadOut" }).call(() => {
                 this.chipPool.put(chip);
+                this.setAreaBetAmount(areaId, all_role_amount, all_room_amount);
             }).start();
         }
     }
 
     onButtonClick(event: Event, customData: string) {
-        //this.otherBet(7, 50);
-        //core.message.dispatchEvent("dealcard");
     }
 
     setAreaBetAmount(areaId: number, playerBet: number, totalBet: number) {
         let betItem = this.betItemArr.find(v => v.areaId == areaId);
         if (betItem) {
             betItem.setBetAmount(playerBet, totalBet);
+        }
+    }
+
+    clear() {
+        for (let i = 0; i < this.betItemArr.length; i++) {
+            this.betItemArr[i].clear(); 
         }
     }
 

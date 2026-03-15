@@ -79,7 +79,6 @@ export class NodeController extends Component {
     onLoad() {
         try {
             this.states = JSON.parse(this.config);
-            console.log(`onLoad recordIndex:${this.recordIndex}`);
             this.StateIndex = this.recordIndex;
         } catch {
             this.states = {};
@@ -101,7 +100,6 @@ export class NodeController extends Component {
 
     protected onDestroy(): void {
         this.recordIndex = this.stateIndex;
-        console.log(`onDestroy recordIndex:${this.recordIndex}`);
     }
 
     /* 捕获状态 */

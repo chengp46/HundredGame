@@ -16,4 +16,8 @@ export class GlobalData {
 
     // 用户信息
     public userInfo: UserInfo = new UserInfo;
+    // 玩法类型
+    public playType: number = 0;
+    // 游戏类型
+    public gameType: number = 0;
 }

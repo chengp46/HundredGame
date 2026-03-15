@@ -21,6 +21,10 @@ export class BetItem extends Component {
     setBetAmount(playerBet: number, totalBet: number) {
         this.betLabel.string = `${playerBet}/${totalBet}`;
     }
+
+    clear() {
+        this.betLabel.string = `0/0`;
+    }
 }
 
 
