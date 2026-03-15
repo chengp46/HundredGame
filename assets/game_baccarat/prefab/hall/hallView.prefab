@@ -193,7 +193,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 200,
       "height": 40
     },
     "_anchorPoint": {
@@ -229,11 +229,11 @@
       "b": 0,
       "a": 255
     },
-    "_string": "button",
+    "_string": "试玩",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 1,
@@ -379,6 +379,7 @@
       }
     ],
     "_interactable": true,
+    "_transition": 0,
     "_normalColor": {
       "__type__": "cc.Color",
       "r": 214,
@@ -442,7 +443,7 @@
     "component": "",
     "_componentId": "d9117cI3C1AJ51vXewqW8AN",
     "handler": "onButtonClick",
-    "customEventData": ""
+    "customEventData": "GUEST"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -614,11 +615,11 @@
       "b": 0,
       "a": 255
     },
-    "_string": "button",
+    "_string": "正式",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 1,
@@ -764,6 +765,7 @@
       }
     ],
     "_interactable": true,
+    "_transition": 0,
     "_normalColor": {
       "__type__": "cc.Color",
       "r": 214,
@@ -827,7 +829,7 @@
     "component": "",
     "_componentId": "d9117cI3C1AJ51vXewqW8AN",
     "handler": "onButtonClick",
-    "customEventData": ""
+    "customEventData": "NORMAL"
   },
   {
     "__type__": "cc.PrefabInfo",

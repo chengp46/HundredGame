@@ -44,12 +44,16 @@ export class GameView extends core.UIView {
     // 阶段信息变更推送
     onPhaseChangePush(event: string, data: any) {
         console.log("阶段信息变更推送:", data);
+        //let 
         switch (data.phase) {
             case 0: // 准备
                 this.dealArea.clear();
                 break;
             case 1: // 发牌
                 this.dealArea.dealCard();
+                console.log(data.deal_info.card_str);
+                const cardStr = String.fromCharCode(data.deal_info.card_str);
+                console.log(cardStr);
                 break;
             case 2: // 下注
                 break;

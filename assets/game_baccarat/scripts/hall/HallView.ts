@@ -16,7 +16,7 @@ export class HallView extends core.UIView {
         core.message.offAll(this);
     }
 
-     // 进入房间
+    // 进入房间
     onEnterRoomResp(event: string, data: any) {
         console.log("进入房间:", data);
         core.scene.changeView(GameView);
@@ -24,9 +24,12 @@ export class HallView extends core.UIView {
 
     onButtonClick(event: Event, customData: string) {
         switch (customData) {
-            case 'enterGame':
-                protoReq.sendEnterRoom(1 ,1);
+            case 'GUEST':
+                protoReq.sendEnterRoom(1, 2);
                 break
+            case 'NORMAL':
+                protoReq.sendEnterRoom(2, 2);
+                break;
             default:
                 break;
         }
