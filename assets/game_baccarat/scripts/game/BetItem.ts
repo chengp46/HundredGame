@@ -1,5 +1,5 @@
 import { _decorator, Component, Label, Node } from 'cc';
-import core from 'db://assets/framework/scripts/GameCore';
+import core from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 @ccclass('BetItem')

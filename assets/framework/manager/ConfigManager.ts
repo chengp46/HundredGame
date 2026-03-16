@@ -1,4 +1,5 @@
 import { resources, JsonAsset } from "cc";
+import { ResLoader } from "./ResLoader";
 
 type ConfigChangeCallback = (configName: string, data: any) => void;
 
@@ -25,10 +26,12 @@ export class ConfigManager {
                     reject(err);
                     return;
                 }
+
                 for (const jsonAsset of assets) {
                     const name = jsonAsset.name.replace(/\.json$/, "");
                     this.setConfig(name, jsonAsset.json);
                 }
+
                 resolve();
             });
         });

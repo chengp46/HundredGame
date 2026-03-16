@@ -1,11 +1,11 @@
 import { _decorator, Component, Label, Node } from 'cc';
-import core, { DlgResource } from 'db://assets/framework/scripts/GameCore';
 import { OperratorArea } from './OperratorArea';
 import { CardData, DealArea } from './DealArea';
 import { protoReq } from '../common/Request';
 import { HallView } from '../hall/HallView';
-import { NodeController } from 'db://assets/framework/scripts/component/NodeController';
 import { AnimationType, SkAnimation } from './SkAnimation';
+import core, { DlgResource } from 'db://assets/framework/GameCore';
+import { NodeController } from 'db://assets/framework/component/NodeController';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameView')
@@ -34,6 +34,7 @@ export class GameView extends core.UIView {
         core.message.on("leave_room_resp", this.onLeaveRoomResp, this);
         core.message.on("roads_resp", this.onRoadsResp, this);
 
+        this.hash.node.active = false;
         let ctrl = this.betArea.getComponent(NodeController);
         if (core.data.gameType === 1) {
             ctrl.StateIndex = 0;
@@ -72,18 +73,20 @@ export class GameView extends core.UIView {
     onPhaseChangePush(event: string, data: any) {
         //console.log("阶段信息变更推送:", data);
         let curTime = data.cut_off_time - Date.now();
-        this.dealArea.setCountdown(Math.floor(curTime / 1000), data.phase, null);
         switch (data.phase) {
             case 0: // 准备
                 this.dealArea.clear();
                 this.operator.clear();
                 this.anim.node.active = false;
+                this.dealArea.roundId.string = `局ID:${data.round_id}`;
                 break;
             case 1: // 发牌
                 this.dealArea.dealCard();
-                this.hash.string = `哈希码:${data.deal_info.hash_value}`;
+                this.hash.node.active = true;
+                this.hash.string = `${data.deal_info.hash_value}`;
                 break;
             case 2: // 下注
+                this.dealArea.setCountdown(Math.floor(curTime / 1000), data.phase, null);
                 this.anim.playAnimation(AnimationType.START_BET);
                 break;
             case 3: // 结算

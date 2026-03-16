@@ -4,8 +4,8 @@ const path = require("path");
 const chokidar = require("chokidar");
 const fs = require("fs");
 
-let textPath = path.join(Editor.Project.path, "assets/framework/config/language/Localized_text.json");
-let imagePath = path.join(Editor.Project.path, "assets/framework/config/language/Localized_image.json");
+let textPath = path.join(Editor.Project.path, "assets/resources/config/language/Localized_text.json");
+let imagePath = path.join(Editor.Project.path, "assets/resources/config/language/Localized_image.json");
 let jsonData: Record<string, any>[] = [];
 
 /**

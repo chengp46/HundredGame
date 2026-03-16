@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, sp } from 'cc';
-import core from 'db://assets/framework/scripts/GameCore';
+import core from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 export enum AnimationType {
@@ -35,9 +35,6 @@ export class SkAnimation extends Component {
     playAnimation(type: AnimationType, callback?:()=>void) {
         this.node.active = true;
         let skeleton = this.animation.getComponent(sp.Skeleton);
-        skeleton.setEndListener(()=>{
-            callback && callback();
-        });
         let animName = "";
         switch (type) {
             case AnimationType.START_BET:
@@ -47,7 +44,9 @@ export class SkAnimation extends Component {
                 skeleton.setAnimation(0, animName, false);
                 break;
             case AnimationType.STOP_BET:
-                core.speech.speak("停止下注");
+                core.speech.speak("停止下注", ()=>{
+                    callback && callback();
+                });
                 skeleton.skeletonData = this.betAnim;
                 animName = core.language.CurrentLanguage == "zh" ? "tzxz_cn" : "tzxz_en";
                 skeleton.setAnimation(0, animName, false);

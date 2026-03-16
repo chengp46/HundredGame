@@ -1,8 +1,8 @@
 import { _decorator, Component, instantiate, Node, NodePool, Prefab, tween, v3, Vec3 } from 'cc';
-import core from 'db://assets/framework/scripts/GameCore';
 import { ChipNode } from './ChipNode';
 import { BetItem } from './BetItem';
 import { protoReq } from '../common/Request'
+import core from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 @ccclass('OperratorArea')

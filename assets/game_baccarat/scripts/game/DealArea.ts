@@ -1,6 +1,6 @@
 import { _decorator, Component, instantiate, Label, Layout, Node, NodePool, tween, v3, Vec3 } from 'cc';
-import core from 'db://assets/framework/scripts/GameCore';
 import { Poker } from './Poker';
+import core from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 export class CardData {
@@ -97,14 +97,12 @@ export class DealArea extends Component {
             poker.setPoker(bankerCard[i].suit, bankerCard[i].point);
             bankerPoint += bankerCard[i].point >= 10 ? 0 : bankerCard[i].point;
         }
+        this.playerPoint.string = (playerPoint % 10).toString();
+        this.bankerPoint.string = (bankerPoint % 10).toString();
         if (playerCard.length === 2) {
-            playerPoint = playerPoint % 10;
-            this.playerPoint.string = playerPoint.toString();
-            if (bankerCard.length === 2) {
-                bankerPoint = bankerPoint % 10;
-                this.bankerPoint.string = bankerPoint.toString();
-                core.speech.speak(`闲家${playerPoint}点`);
-                core.speech.speak(`庄家${bankerPoint}点`, () => {
+            core.speech.speak(`闲家${playerPoint % 10}点`);
+            if (bankerCard.length === 2) {        
+                core.speech.speak(`庄家${bankerPoint % 10}点`, () => {
                     callback && callback();
                 });
             } else {
@@ -114,7 +112,6 @@ export class DealArea extends Component {
                     bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
                     bankerPoint = bankerPoint % 10;
                     this.bankerPoint.string = bankerPoint.toString();
-                    core.speech.speak(`闲家${playerPoint}点`);
                     core.speech.speak(`庄家${bankerPoint}点`, () => {
                         callback && callback();
                     });
@@ -127,14 +124,13 @@ export class DealArea extends Component {
                 playerPoint += playerCard[2].point >= 10 ? 0 : playerCard[2].point;
                 playerPoint = playerPoint % 10;
                 this.playerPoint.string = playerPoint.toString();
+                core.speech.speak(`闲家${playerPoint}点`);
                 if (bankerCard.length === 2) {
                     bankerPoint = bankerPoint % 10;
-                    this.bankerPoint.string = bankerPoint.toString();
-                    core.speech.speak(`闲家${playerPoint}点`);
-                    core.speech.speak(`庄家${bankerPoint}点`, ()=>{
+                    this.bankerPoint.string = bankerPoint.toString();                 
+                    core.speech.speak(`庄家${bankerPoint}点`, () => {
                         callback && callback();
                     });
-                    
                 } else {
                     await core.util.sleep(1);
                     this.flyCard(1, (card: Poker) => {
@@ -142,10 +138,9 @@ export class DealArea extends Component {
                         bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
                         bankerPoint = bankerPoint % 10;
                         this.bankerPoint.string = bankerPoint.toString();
-                        core.speech.speak(`闲家${playerPoint}点`);
-                        core.speech.speak(`庄家${bankerPoint}点`, ()=>{
+                        core.speech.speak(`庄家${bankerPoint}点`, () => {
                             callback && callback();
-                        });           
+                        });
                     });
                 }
             });

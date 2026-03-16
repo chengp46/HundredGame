@@ -1,4 +1,4 @@
-import core from "db://assets/framework/scripts/GameCore";
+import core from "db://assets/framework/GameCore";
 
 export class Request {
     private static _instance: Request;

@@ -1,6 +1,5 @@
-import { _decorator, Component, Enum, JsonAsset, Node, Prefab, profiler } from 'cc';
+import { _decorator, AssetManager, assetManager, Component} from 'cc';
 import core from './GameCore';
-import { ResLoader } from './manager/ResLoader';
 const { ccclass } = _decorator;
 
 @ccclass('StartScene')
@@ -14,8 +13,7 @@ export class StartScene extends Component {
         core.language.initConfig();
         core.wssock.Url = "ws:192.168.100.62:6006/ws";
         core.wssock.connect();
-        this.loadHall();
-        profiler.hideStats(); // 隐藏
+        await core.scene.loadView("prefab/hall/hallView", "game_baccarat");
     }
 
     protected onDestroy(): void {
@@ -29,20 +27,6 @@ export class StartScene extends Component {
         core.data.userInfo.real_money = data.real_money;
         core.log.info(data);
     }
-
-    async loadHall() {
-        let bundle = await ResLoader.getBundle("game_baccarat");
-        if (!bundle) {
-            return;
-        }
-        bundle.load("prefab/hall/hallView", Prefab, (err, asset) => {
-            if (err) {
-                return;
-            }
-            core.scene.loadView(asset);
-        });
-    }
-
 }
 
 

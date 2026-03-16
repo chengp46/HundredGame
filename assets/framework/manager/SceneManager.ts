@@ -1,4 +1,4 @@
-import { _decorator, Component, macro, Node, UITransform, Prefab, error, instantiate, Button, v3, tween, Sprite, Color, isValid, size, Game, director, game, screen, view, Vec3, ResolutionPolicy, find, Canvas, Layers, Camera, gfx, renderer, Widget, SpriteFrame, UIOpacity, Size, sys, math } from 'cc';
+import { _decorator, Component, macro, Node, UITransform, Prefab, error, instantiate, Button, v3, tween, Sprite, Color, isValid, size, Game, director, game, screen, view, Vec3, ResolutionPolicy, find, Canvas, Layers, Camera, gfx, renderer, Widget, SpriteFrame, UIOpacity, Size, sys, math, Tween } from 'cc';
 import { MessageMgr } from './MessageManager';
 import { __TYPE__, UIResource } from './Decorators';
 import { ResLoader } from './ResLoader';
@@ -204,13 +204,16 @@ export class SceneManager {
         view.setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy.FIXED_HEIGHT);
         if (!this.bGlobalEvent) {
             this.bGlobalEvent = true;
-            // 切换到前台事件
-            game.on(Game.EVENT_SHOW, () => {
-                MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, true);
-            });
             // 进入后台时触发的事件
-            game.on(Game.EVENT_HIDE, () => {
-                MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, false);
+            game.on(Game.EVENT_HIDE, this.onEventHide, this);
+            // 切换到前台事件
+            game.on(Game.EVENT_SHOW, this.onEventShow, this);
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    this.onEventHide();
+                } else {
+                    this.onEventShow();
+                }
             });
         }
 
@@ -229,6 +232,50 @@ export class SceneManager {
         const cWh = canvasSize.height * scales;
         let scaleYY = window.innerHeight / cWh;
         screen.windowSize = new Size(cWw * scaleYY, cWh * scaleYY);
+    }
+
+    onEventHide() {
+        // 暂停所有 Tween
+        Tween.stopAll();
+        // 暂停 scheduler（update / schedule）
+        director.pause();
+        // 暂停全局时间
+        //director.getScheduler().setTimeScale(0);
+        // 暂停所有 Animation
+        const nodes = director.getScene().children;
+        this.pauseAnimation(nodes);
+        MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, false);
+    }
+
+    onEventShow() {
+        // 恢复 scheduler
+        director.resume();
+        // 恢复时间
+        //director.getScheduler().setTimeScale(1);
+        // 恢复 Animation
+        const nodes = director.getScene().children;
+        this.resumeAnimation(nodes);
+        MessageMgr.dispatchEvent(ScreenEvent.EventShowAndHide, true);
+    }
+
+    pauseAnimation(nodes: any[]) {
+        for (const node of nodes) {
+            const anim = node.getComponent(Animation);
+            if (anim) {
+                anim.pause();
+            }
+            this.pauseAnimation(node.children);
+        }
+    }
+
+    resumeAnimation(nodes: any[]) {
+        for (const node of nodes) {
+            const anim = node.getComponent(Animation);
+            if (anim) {
+                anim.resume();
+            }
+            this.resumeAnimation(node.children);
+        }
     }
 
 
@@ -264,9 +311,18 @@ export class SceneManager {
         }
     }
 
-    loadView(prefab: Prefab) {
-        const newNode = instantiate(prefab);
-        newNode.parent = this.sceneLayer;
+    async loadView(prefabPath: string, bundleName: string) {
+        let bundle = await ResLoader.getBundle(bundleName);
+        if (!bundle) {
+            return;
+        }
+        bundle.load("prefab/hall/hallView", Prefab, (err, asset) => {
+            if (err) {
+                return;
+            }
+            const newNode = instantiate(asset);
+            newNode.parent = this.sceneLayer;
+        });
     }
 
     changeView<T extends UIView>(viewType: __TYPE__<T>, callback?: (view: T) => T | void) {

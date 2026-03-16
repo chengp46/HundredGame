@@ -1,7 +1,7 @@
 import { _decorator, Component, Node } from 'cc';
-import core, { DlgResource } from 'db://assets/framework/scripts/GameCore';
 import { GameView } from '../game/GameView';
 import { protoReq } from '../common/Request';
+import core, { DlgResource } from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 @ccclass('HallView')
