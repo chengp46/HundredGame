@@ -7,13 +7,13 @@ export class StartScene extends Component {
 
     async start() {
         core.message.on("login_resp", this.loginResp, this);
-        core.scene.initScene(this.node);
+        core.scene.init(this.node);
         core.audio.init(this.node);
         await core.config.loadAllConfigs();
         core.language.initConfig();
-        core.wssock.Url = "ws:192.168.100.62:6006/ws";
-        core.wssock.connect();
-        await core.scene.loadView("prefab/hall/hallView", "game_baccarat");
+        //core.wssock.Url = "ws:192.168.100.62:6006/ws";
+        //core.wssock.connect();
+        await core.scene.loadView("view_HallView", "game_baccarat", "prefab/hall/hallView");
     }
 
     protected onDestroy(): void {

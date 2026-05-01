@@ -45,31 +45,33 @@ export class DealArea extends Component {
     }
 
     // 0:闲家 1：庄家 珠
-    flyCard(type: number, callback?: (card: Poker) => void) {
-        let poker: Node = null;
-        if (this.pokerPool.size() > 0) {
-            poker = this.pokerPool.get();
-        } else {
-            poker = instantiate(this.pokerNode);
-        }
-        poker.active = true;
-        poker.scale = v3(0.5, 0.5, 1);
-        poker.parent = this.node;
-        let card = poker.getComponent(Poker);
-        card.setPoker(0, 0);
-        if (0 == type) {
-            tween(poker).to(0.1, { position: this.playerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
-                poker.parent = this.playerArea.node;
-            }).delay(1).call(() => {
-                callback && callback(card);
-            }).start();
-        } else if (1 == type) {
-            tween(poker).to(0.1, { position: this.bankerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
-                poker.parent = this.bankerArea.node;
-            }).delay(1).call(() => {
-                callback && callback(card);
-            }).start();
-        }
+    async flyCard(type: number) {
+        return new Promise<Poker>((resolve) => {
+            let poker: Node = null;
+            if (this.pokerPool.size() > 0) {
+                poker = this.pokerPool.get();
+            } else {
+                poker = instantiate(this.pokerNode);
+            }
+            poker.active = true;
+            poker.scale = v3(0.5, 0.5, 1);
+            poker.parent = this.node;
+            let card = poker.getComponent(Poker);
+            card.setPoker(0, 0);
+            if (0 == type) {
+                tween(poker).to(0.1, { position: this.playerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
+                    poker.parent = this.playerArea.node;
+                }).delay(1).call(() => {
+                    resolve(card);
+                }).start();
+            } else if (1 == type) {
+                tween(poker).to(0.1, { position: this.bankerArea.node.position, scale: new Vec3(1, 1, 1) }).call(() => {
+                    poker.parent = this.bankerArea.node;
+                }).delay(1).call(() => {
+                    resolve(card);
+                }).start();
+            }
+        });
     }
 
     dealCard() {
@@ -101,49 +103,46 @@ export class DealArea extends Component {
         this.bankerPoint.string = (bankerPoint % 10).toString();
         if (playerCard.length === 2) {
             core.speech.speak(`闲家${playerPoint % 10}点`);
-            if (bankerCard.length === 2) {        
+            if (bankerCard.length === 2) {
                 core.speech.speak(`庄家${bankerPoint % 10}点`, () => {
                     callback && callback();
                 });
             } else {
                 await core.util.sleep(1);
-                this.flyCard(1, (card: Poker) => {
-                    card.setPoker(bankerCard[2].suit, bankerCard[2].point);
-                    bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
-                    bankerPoint = bankerPoint % 10;
-                    this.bankerPoint.string = bankerPoint.toString();
-                    core.speech.speak(`庄家${bankerPoint}点`, () => {
-                        callback && callback();
-                    });
+                let card = await this.flyCard(1);
+                card.setPoker(bankerCard[2].suit, bankerCard[2].point);
+                bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
+                bankerPoint = bankerPoint % 10;
+                this.bankerPoint.string = bankerPoint.toString();
+                core.speech.speak(`庄家${bankerPoint}点`, () => {
+                    callback && callback();
                 });
             }
         } else {
             await core.util.sleep(1);
-            this.flyCard(0, async (card: Poker) => {
-                card.setPoker(playerCard[2].suit, playerCard[2].point);
-                playerPoint += playerCard[2].point >= 10 ? 0 : playerCard[2].point;
-                playerPoint = playerPoint % 10;
-                this.playerPoint.string = playerPoint.toString();
-                core.speech.speak(`闲家${playerPoint}点`);
-                if (bankerCard.length === 2) {
-                    bankerPoint = bankerPoint % 10;
-                    this.bankerPoint.string = bankerPoint.toString();                 
-                    core.speech.speak(`庄家${bankerPoint}点`, () => {
-                        callback && callback();
-                    });
-                } else {
-                    await core.util.sleep(1);
-                    this.flyCard(1, (card: Poker) => {
-                        card.setPoker(bankerCard[2].suit, bankerCard[2].point);
-                        bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
-                        bankerPoint = bankerPoint % 10;
-                        this.bankerPoint.string = bankerPoint.toString();
-                        core.speech.speak(`庄家${bankerPoint}点`, () => {
-                            callback && callback();
-                        });
-                    });
-                }
-            });
+            let card = await this.flyCard(0);
+            card.setPoker(playerCard[2].suit, playerCard[2].point);
+            playerPoint += playerCard[2].point >= 10 ? 0 : playerCard[2].point;
+            playerPoint = playerPoint % 10;
+            this.playerPoint.string = playerPoint.toString();
+            core.speech.speak(`闲家${playerPoint}点`);
+            if (bankerCard.length === 2) {
+                bankerPoint = bankerPoint % 10;
+                this.bankerPoint.string = bankerPoint.toString();
+                core.speech.speak(`庄家${bankerPoint}点`, () => {
+                    callback && callback();
+                });
+            } else {
+                await core.util.sleep(1);
+                card = await this.flyCard(1);
+                card.setPoker(bankerCard[2].suit, bankerCard[2].point);
+                bankerPoint += bankerCard[2].point >= 10 ? 0 : bankerCard[2].point;
+                bankerPoint = bankerPoint % 10;
+                this.bankerPoint.string = bankerPoint.toString();
+                core.speech.speak(`庄家${bankerPoint}点`, () => {
+                    callback && callback();
+                });
+            }
         }
     }
 

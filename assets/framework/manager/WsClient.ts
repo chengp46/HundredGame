@@ -58,9 +58,7 @@ export class WsClient {
     // 发送数据
     send(data) {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-            this.ws.send(
-                typeof data === "string" ? data : JSON.stringify(data)
-            );
+            this.ws.send(typeof data === "string" ? data : JSON.stringify(data));
         }
     }
 

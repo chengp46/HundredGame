@@ -1,5 +1,4 @@
 import { resources, JsonAsset } from "cc";
-import { ResLoader } from "./ResLoader";
 
 type ConfigChangeCallback = (configName: string, data: any) => void;
 

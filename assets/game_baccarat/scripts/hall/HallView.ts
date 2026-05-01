@@ -5,7 +5,7 @@ import core, { DlgResource } from 'db://assets/framework/GameCore';
 const { ccclass, property } = _decorator;
 
 @ccclass('HallView')
-@DlgResource("prefab/hall/hallView", "game_baccarat")
+@DlgResource({ bundle: "game_baccarat", path: "prefab/hall/hallView", cache: false })
 export class HallView extends core.UIView {
 
     gameType: number = 0;
@@ -22,24 +22,26 @@ export class HallView extends core.UIView {
     // 进入房间
     onEnterRoomResp(event: string, data: any) {
         console.log("进入房间:", data);
-        core.scene.changeView(GameView, (view: GameView) => {
-        });
+        // core.scene.changeView(GameView, (view: GameView) => {
+        // });
     }
 
     onButtonClick(event: Event, customData: string) {
-        switch (customData) {
-            case 'GUEST':
-                core.data.playType = 1;
-                core.data.gameType = 2;
-                break
-            case 'NORMAL':
-                core.data.playType = 1;
-                core.data.gameType = 2;
-                break;
-            default:
-                break;
-        }
-        protoReq.sendEnterRoom(core.data.playType, core.data.gameType);
+        // switch (customData) {
+        //     case 'GUEST':
+        //         core.data.playType = 1;
+        //         core.data.gameType = 2;
+        //         break
+        //     case 'NORMAL':
+        //         core.data.playType = 1;
+        //         core.data.gameType = 2;
+        //         break;
+        //     default:
+        //         break;
+        // }
+        // protoReq.sendEnterRoom(core.data.playType, core.data.gameType);
+        core.scene.changeView(GameView, (view: GameView) => {
+        });
     }
 }
 

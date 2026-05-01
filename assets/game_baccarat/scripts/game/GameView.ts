@@ -9,7 +9,7 @@ import { NodeController } from 'db://assets/framework/component/NodeController';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameView')
-@DlgResource("prefab/game/gameView", "game_baccarat")
+@DlgResource({path:"prefab/game/gameView", bundle:"game_baccarat", cache:false})
 export class GameView extends core.UIView {
 
     @property({ type: DealArea, displayName: "发牌区" })
@@ -47,6 +47,14 @@ export class GameView extends core.UIView {
         core.message.offAll(this)
     }
 
+    // override onEventShow(bShow: boolean) {
+    //     if (bShow) {
+    //         core.speech.clear();
+    //         this.dealArea.clear();
+    //     }
+    //     console.log(`GameView onEventShow ${bShow}............`);
+    // }
+
     onButtonClick(event: Event, customData: string) {
         switch (customData) {
             case 'exitGame':
@@ -71,8 +79,6 @@ export class GameView extends core.UIView {
 
     // 阶段信息变更推送
     onPhaseChangePush(event: string, data: any) {
-        //console.log("阶段信息变更推送:", data);
-        let curTime = data.cut_off_time - Date.now();
         switch (data.phase) {
             case 0: // 准备
                 this.dealArea.clear();
@@ -86,6 +92,7 @@ export class GameView extends core.UIView {
                 this.hash.string = `${data.deal_info.hash_value}`;
                 break;
             case 2: // 下注
+                let curTime = data.cut_off_time - Date.now();
                 this.dealArea.setCountdown(Math.floor(curTime / 1000), data.phase, null);
                 this.anim.playAnimation(AnimationType.START_BET);
                 break;

@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, NodePool, Prefab, tween, v3, Vec3 } from 'cc';
+import { _decorator, color, Component, instantiate, Label, Node, NodePool, Prefab, tween, v3, Vec3 } from 'cc';
 import { ChipNode } from './ChipNode';
 import { BetItem } from './BetItem';
 import { protoReq } from '../common/Request'
@@ -29,6 +29,7 @@ export class OperratorArea extends Component {
 
     start() {
         core.message.on("BetItemClick", this.onBetItemCallback, this);
+        this.setSelectChip();
     }
 
     protected onDestroy(): void {
@@ -38,10 +39,22 @@ export class OperratorArea extends Component {
 
     onToggleCallback(event: Event, customEventData: string) {
         this.selectIndex = Number(customEventData) - 1;
+        this.setSelectChip();
     }
 
     onBetItemCallback(event: string, node: Node, areaId: number) {
         protoReq.sendBettingReq(core.data.playType, this.chipAmount[this.selectIndex], areaId);
+    }
+
+    setSelectChip() {
+        for (let i = 0; i < this.chipArr.length; i++) {
+            let numLabel = this.chipArr[i].getChildByName("amount").getComponent(Label);
+            if (i === this.selectIndex) {
+                numLabel.color = color(255, 255, 255, 255);
+            } else {
+                numLabel.color = color(255, 255, 255, 150);
+            }
+        }
     }
 
     playerBet(areaId: number, amount: number, all_role_amount: number, all_room_amount: number) {
@@ -103,7 +116,7 @@ export class OperratorArea extends Component {
 
     clear() {
         for (let i = 0; i < this.betItemArr.length; i++) {
-            this.betItemArr[i].clear(); 
+            this.betItemArr[i].clear();
         }
     }
 

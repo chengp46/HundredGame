@@ -1,6 +1,5 @@
 import { _decorator, Component, resources, TextAsset, director, JsonAsset, SpriteFrame, Sprite, Enum, find, Node, game } from 'cc';
 import { MessageMgr } from '../manager/MessageManager';
-import { ResLoader } from '../manager/ResLoader';
 import { ConfigMgr } from '../manager/ConfigManager';
 
 const { ccclass, property, executeInEditMode, disallowMultiple } = _decorator;
@@ -175,10 +174,10 @@ export class LanguageManager {
                 data.path = data.path + this.currentLanguage + "/";
             }
             data.path = data.path + data.imageName + "/spriteFrame";
-            let image = await ResLoader.load(data.path, SpriteFrame, data.bundleName);
-            if (image) {
-                sprite.spriteFrame = image;
-            }
+            // let image = await ResLoader.load(data.path, SpriteFrame, data.bundleName);
+            // if (image) {
+            //     sprite.spriteFrame = image;
+            // }
         };
         func();
     }

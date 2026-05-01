@@ -15,7 +15,6 @@ export class SpeechManager {
 
     private _queue: SpeechData[] = [];
     private _isSpeaking = false;
-    private speakId: number = 0;
 
 
     speak(text: string, callback:()=>void = null) {
@@ -26,8 +25,14 @@ export class SpeechManager {
         this.playNext();
     }
 
+    clear() {
+        this._queue.length = 0;
+    }
+
     private playNext() {
-        if (this._isSpeaking) return;
+        if (this._isSpeaking) {
+            return;
+        } 
         if (this._queue.length === 0) {
             AudioMgr.recoverBGM();
             return;

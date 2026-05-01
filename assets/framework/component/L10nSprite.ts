@@ -1,7 +1,6 @@
 import { _decorator, Component, Node, Sprite, SpriteFrame } from 'cc';
 import { EDITOR } from 'cc/env';
 import { MessageMgr } from '../manager/MessageManager';
-import { ResLoader } from '../manager/ResLoader';
 import { LanguageMgr } from './LanguageManager';
 const { ccclass, property, requireComponent, executeInEditMode, disallowMultiple } = _decorator;
 
@@ -51,9 +50,9 @@ export class L10nSprite extends Component {
                 let func = async () => {
                     //let url = imgData.path + '/' + imgData.imageName + "/spriteFrame";
                     let url = imgData.path + '/' + imgData.imageName;
-                    let spriteFrame = await ResLoader.load(url, SpriteFrame, this.bundle);
-                    console.log(`spriteFrame: ${spriteFrame}`);
-                    this.sprite.spriteFrame = spriteFrame;
+                    // let spriteFrame = await ResLoader.load(url, SpriteFrame, this.bundle);
+                    // console.log(`spriteFrame: ${spriteFrame}`);
+                    // this.sprite.spriteFrame = spriteFrame;
                 };
                 func();
             }

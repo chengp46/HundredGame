@@ -1,6 +1,5 @@
 import { Node, AudioSource, AudioClip } from 'cc';
 import { AudioChannel } from './AudioChannel';
-import { ResLoader } from './ResLoader';
 
 export enum AudioChannelType {
     BGM = 1,
@@ -81,8 +80,8 @@ export class AudioManager {
         let source = this.mapSourceList.get(key);
         if (source) {
             let call = async () => {
-                let audio = await ResLoader.load(source.path, AudioClip, source.bundle);
-                callback(audio);
+                // let audio = await ResLoader.load(source.path, AudioClip, source.bundle);
+                // callback(audio);
             };
             call();
         } else {

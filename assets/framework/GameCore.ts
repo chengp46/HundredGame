@@ -1,4 +1,3 @@
-import { SceneMgr, UIDialog, UIView } from "./manager/SceneManager";
 import { ArrayUtil } from "./utils/ArrayUtil";
 import { DeviceUtil } from "./utils/DeviceUtil";
 import { ImageUtil } from "./utils/ImageUtil";
@@ -15,13 +14,17 @@ import { MessageMgr } from "./manager/MessageManager";
 import { StorageMgr } from "./manager/StorageManager";
 import HttpRequest, { HttpResponse } from "./manager/HttpRequest";
 import LogManager from "./manager/LogManager";
-import { ResLoader } from "./manager/ResLoader";
-import { DialogResource } from "./manager/Decorators";
 import { WsClient, WsSocket } from "./manager/WsClient";
 import { LayoutUtil } from "./utils/LayoutUtil";
 import { SpeechMgr } from "./manager/SpeechManager";
 import { LanguageMgr, LanguageType } from "./component/LanguageManager";
 import { Utils } from "./utils/Utils";
+import { SceneMgr } from "./ui/SceneManager";
+import { UIView } from "./ui/UIView";
+import { UIDialog } from "./ui/UIDialog";
+import { ResManager } from "./res/ResManager";
+import { DialogResource } from "./ui/UIManager";
+
 
 export class GameCore {
     audio = AudioMgr;
@@ -38,7 +41,7 @@ export class GameCore {
     UIDialog = UIDialog;
     httpReq = HttpRequest;
     log = LogManager;
-    loader = ResLoader;
+    loader = ResManager;
     arrayUtil = ArrayUtil;
     deviceUtil = DeviceUtil;
     imageUtil = ImageUtil;
