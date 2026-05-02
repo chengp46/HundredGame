@@ -10,7 +10,7 @@ export class WalletConnectV2 implements IWallet {
 
     async init() {
         this.client = await SignClient.init({
-            projectId: "YOUR_PROJECT_ID",
+            projectId: "e48886576374b12dde126878786314bc",
             metadata: {
                 name: "CocosGame",
                 description: "Web3 Game",
