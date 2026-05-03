@@ -2,6 +2,7 @@ import { _decorator, Component, Node } from 'cc';
 import { GameView } from '../game/GameView';
 import { protoReq } from '../common/Request';
 import core, { DlgResource } from 'db://assets/framework/GameCore';
+import { WalletManager } from 'db://assets/framework/wallet/WalletManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('HallView')
@@ -26,22 +27,23 @@ export class HallView extends core.UIView {
         // });
     }
 
-    onButtonClick(event: Event, customData: string) {
-        // switch (customData) {
-        //     case 'GUEST':
-        //         core.data.playType = 1;
-        //         core.data.gameType = 2;
-        //         break
-        //     case 'NORMAL':
-        //         core.data.playType = 1;
-        //         core.data.gameType = 2;
-        //         break;
-        //     default:
-        //         break;
-        // }
+    async onButtonClick(event: Event, customData: string) {
+        switch (customData) {
+            case 'GUEST':
+                core.data.playType = 1;
+                core.data.gameType = 2;
+                break
+            case 'NORMAL':
+                core.data.playType = 1;
+                core.data.gameType = 2;
+                break;
+            case 'WALLET':
+                await WalletManager.connect();
+                break;
+            default:
+                break;
+        }
         // protoReq.sendEnterRoom(core.data.playType, core.data.gameType);
-        core.scene.changeView(GameView, (view: GameView) => {
-        });
     }
 }
 
