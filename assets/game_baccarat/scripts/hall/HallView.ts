@@ -3,6 +3,7 @@ import { GameView } from '../game/GameView';
 import { protoReq } from '../common/Request';
 import core, { DlgResource } from 'db://assets/framework/GameCore';
 import { WalletManager } from 'db://assets/framework/wallet/WalletManager';
+import { SignManager } from '../../../framework/wallet/SignManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('HallView')
@@ -38,7 +39,12 @@ export class HallView extends core.UIView {
                 core.data.gameType = 2;
                 break;
             case 'WALLET':
-                await WalletManager.connect();
+                const wallet = WalletManager.getProvider();
+                const address = await wallet.connect();
+                let param = { address: address };
+                let httpReq = new core.httpReq();
+                await httpReq.postAsync("192.168.100.62:7000/api/login/nonce", param);
+                let result = await SignManager.login("12");
                 break;
             default:
                 break;

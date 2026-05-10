@@ -82,9 +82,9 @@ export default class HttpRequest {
      * @param callback 成功回调
      */
     public post(url: string, params: any, callback: (data: HttpResponse) => void): void {
-        if (!this.headers.has('Content-Type')) {
-            this.headers.set('Content-Type', 'application/json');
-        }
+        // if (!this.headers.has('Content-Type')) {
+        //     this.headers.set('Content-Type', 'application/json');
+        // }
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), this.timeout);
         let res: HttpResponse = new HttpResponse();
@@ -97,12 +97,12 @@ export default class HttpRequest {
         }).then(response => {
             clearTimeout(timeoutId);
             if (!response.ok) {
-                res.code = -1;         
+                res.code = -1;
             }
             return response.json();
         }).then(data => {
-            res.code = data.code;
-            res.data = data.msg;
+            res.code = data.code ?? 0;
+            res.data = data.msg ?? data;
             callback(res);
         }).catch(error => {
             res.code = -1;
