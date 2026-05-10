@@ -9,6 +9,10 @@ export class Request {
         return this._instance;
     }
 
+    sendLoginReq(address: string, once: number, signature: string) {
+        core.wssock.send(JSON.stringify({ msg_id: "login_req", address: address, once: once, signature: signature }));
+    }
+
     sendEnterRoom(playe_type: number, game_type: number) {
         core.wssock.send(JSON.stringify({ msg_id: "enter_room_req", play_type: playe_type, game_type: game_type }));
     }

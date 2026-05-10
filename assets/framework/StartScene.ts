@@ -11,8 +11,8 @@ export class StartScene extends Component {
         core.audio.init(this.node);
         await core.config.loadAllConfigs();
         core.language.initConfig();
-        //core.wssock.Url = "ws:192.168.100.62:6006/ws";
-        //core.wssock.connect();
+        core.wssock.Url = "ws:192.168.100.62:6006/ws";
+        core.wssock.connect();
         await core.scene.loadView("view_HallView", "game_baccarat", "prefab/hall/hallView");
     }
 

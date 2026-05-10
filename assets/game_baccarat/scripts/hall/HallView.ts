@@ -13,8 +13,9 @@ export class HallView extends core.UIView {
     gameType: number = 0;
 
     start() {
-        core.message.on("enter_room_resp", this.onEnterRoomResp, this);
-        core.speech.speak("欢迎进入游戏");
+        //core.message.on("enter_room_resp", this.onEnterRoomResp, this);
+        //core.speech.speak("欢迎进入游戏");
+        core.message.on("login_resp", this.onLoginResp, this);
     }
 
     protected onDestroy(): void {
@@ -26,6 +27,12 @@ export class HallView extends core.UIView {
         console.log("进入房间:", data);
         // core.scene.changeView(GameView, (view: GameView) => {
         // });
+    }
+
+    onLoginResp(event: string, data: any) {
+        console.log("登录响应:", data);
+        core.scene.changeView(GameView, (view: GameView) => {
+        });
     }
 
     async onButtonClick(event: Event, customData: string) {
@@ -46,7 +53,7 @@ export class HallView extends core.UIView {
                 let result = await httpReq.postAsync("http://192.168.100.62:7000/api/login/nonce", param);
                 console.log(`nonce: ${JSON.stringify(result.data)}`);
                 const signature = await wallet.signMessage(result.data.once);
-                
+                protoReq.sendLoginReq(address, result.data.once, signature);
                 break;
             default:
                 break;
