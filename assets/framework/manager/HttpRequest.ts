@@ -67,7 +67,7 @@ export default class HttpRequest {
             });
     }
 
-    public async getAsync(url: string, params: any) {
+    public async getAsync(url: string, params: any): Promise<HttpResponse> {
         return new Promise((resolve, _) => {
             this.get(url, params, (data: HttpResponse) => {
                 resolve(data);
@@ -111,7 +111,7 @@ export default class HttpRequest {
         });
     }
 
-    public async postAsync(url: string, params: any) {
+    public async postAsync(url: string, params: any): Promise<HttpResponse> {
         return new Promise((resolve, _) => {
             this.post(url, params, (data: HttpResponse) => {
                 resolve(data);

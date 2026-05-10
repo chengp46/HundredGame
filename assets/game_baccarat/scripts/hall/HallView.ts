@@ -43,8 +43,10 @@ export class HallView extends core.UIView {
                 const address = await wallet.connect();
                 let param = { address: address };
                 let httpReq = new core.httpReq();
-                await httpReq.postAsync("192.168.100.62:7000/api/login/nonce", param);
-                let result = await SignManager.login("12");
+                let result = await httpReq.postAsync("http://192.168.100.62:7000/api/login/nonce", param);
+                console.log(`nonce: ${JSON.stringify(result.data)}`);
+                const signature = await wallet.signMessage(result.data.once);
+                
                 break;
             default:
                 break;
