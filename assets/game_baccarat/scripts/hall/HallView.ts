@@ -36,17 +36,23 @@ export class HallView extends core.UIView {
     }
 
     async onButtonClick(event: Event, customData: string) {
+        const wallet = WalletManager.getProvider();
         switch (customData) {
             case 'GUEST':
                 core.data.playType = 1;
                 core.data.gameType = 2;
                 break
             case 'NORMAL':
-                core.data.playType = 1;
-                core.data.gameType = 2;
+                // 构造交易参数
+                let account = wallet.getAddress();
+                const txParams = {
+                    from: account,
+                    to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+                    value: "0x" + (1e18).toString(16),
+                };
+                wallet.sendTransaction(txParams);
                 break;
             case 'WALLET':
-                const wallet = WalletManager.getProvider();
                 const address = await wallet.connect();
                 let param = { address: address };
                 let httpReq = new core.httpReq();
