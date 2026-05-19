@@ -24,6 +24,7 @@ import { UIView } from "./ui/UIView";
 import { UIDialog } from "./ui/UIDialog";
 import { ResManager } from "./res/ResManager";
 import { DialogResource } from "./ui/UIManager";
+import { AssetLoader } from "./res/AssetLoader";
 
 
 export class GameCore {
@@ -41,7 +42,7 @@ export class GameCore {
     UIDialog = UIDialog;
     httpReq = HttpRequest;
     log = LogManager;
-    loader = ResManager;
+    loader = AssetLoader;
     arrayUtil = ArrayUtil;
     deviceUtil = DeviceUtil;
     imageUtil = ImageUtil;

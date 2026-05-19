@@ -31,8 +31,8 @@ export class HallView extends core.UIView {
 
     onLoginResp(event: string, data: any) {
         console.log("登录响应:", data);
-        core.scene.changeView(GameView, (view: GameView) => {
-        });
+        // core.scene.changeView(GameView, (view: GameView) => {
+        // });
     }
 
     async onButtonClick(event: Event, customData: string) {
@@ -41,14 +41,18 @@ export class HallView extends core.UIView {
             case 'GUEST':
                 core.data.playType = 1;
                 core.data.gameType = 2;
+                core.scene.changeView(GameView, (view: GameView) => {
+                });
                 break
             case 'NORMAL':
                 // 构造交易参数
-                let account = wallet.getAddress();
+                let account = await wallet.getAddress();
+                console.log("account:", account);
                 const txParams = {
                     from: account,
                     to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
-                    value: "0x" + (1e18).toString(16),
+                    value: "0x" + (2e18).toString(16),
+                    data: "0x47e7ef2400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
                 };
                 wallet.sendTransaction(txParams);
                 break;
