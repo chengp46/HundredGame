@@ -6,10 +6,11 @@ import { HallView } from '../hall/HallView';
 import { AnimationType, SkAnimation } from './SkAnimation';
 import core, { DlgResource } from 'db://assets/framework/GameCore';
 import { NodeController } from 'db://assets/framework/component/NodeController';
+import { TransferDlg } from './TransferDlg';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameView')
-@DlgResource({path:"prefab/game/gameView", bundle:"game_baccarat", cache:false})
+@DlgResource({ path: "prefab/game/gameView", bundle: "game_baccarat", cache: false })
 export class GameView extends core.UIView {
 
     @property({ type: DealArea, displayName: "发牌区" })
@@ -61,6 +62,11 @@ export class GameView extends core.UIView {
                 //protoReq.leaveRoomReq();
                 this.dealArea.dealCard();
                 break
+            case "transfer":
+                core.scene.openDialog(TransferDlg, (dlg: TransferDlg) => {
+
+                });
+                break;
             default:
                 break;
         }

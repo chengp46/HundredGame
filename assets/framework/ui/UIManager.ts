@@ -2,6 +2,7 @@ import {
     _decorator, Component, Node, UITransform, view, Sprite,
     Color, tween, Vec3, Event
 } from "cc";
+import { ImageUtil } from "../utils/ImageUtil";
 
 const { ccclass } = _decorator;
 
@@ -164,9 +165,10 @@ export class UIManager {
     static createMask(parent: Node) {
         const mask = new Node("Mask");
         const trans = mask.addComponent(UITransform);
-        trans.setContentSize(10000, 10000);
         const sp = mask.addComponent(Sprite);
         sp.color = new Color(0, 0, 0, 120);
+        sp.spriteFrame = ImageUtil.createPureColorSpriteFrame(Color.BLACK);
+        trans.setContentSize(10000, 10000);
         mask.addComponent(BlockMask);
         parent.addChild(mask);
         return mask;

@@ -51,16 +51,16 @@ export class HallView extends core.UIView {
                 break
             case 'NORMAL':
                 // 构造交易参数
-              const account = await wallet.connect();
-              this.withdraw(account,wallet)
+                const account = await wallet.connect();
+                this.withdraw(account, wallet)
 
-            //   const txParams = {
-            //         from: account,
-            //         to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
-            //         value: "0x" + (1e18).toString(16),
-            //         };
+                //   const txParams = {
+                //         from: account,
+                //         to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+                //         value: "0x" + (1e18).toString(16),
+                //         };
 
-            //     await wallet.sendTransaction(txParams);
+                //     await wallet.sendTransaction(txParams);
                 break;
             case 'WALLET':
                 const address = await wallet.connect();
@@ -77,22 +77,22 @@ export class HallView extends core.UIView {
         // protoReq.sendEnterRoom(core.data.playType, core.data.gameType);
     }
 
-   async deposit(account:string,wallet:IWalletProvider){
+    async deposit(account: string, wallet: IWalletProvider) {
         const txParams = {
-        from: account,
-        to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
-        data: "0xf4d4c9d700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
-        value: "0x" + (2e18).toString(16)
+            from: account,
+            to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+            data: "0xf4d4c9d700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
+            value: "0x" + (2e18).toString(16)
         };
         await wallet.sendTransaction(txParams);
     }
 
-    async withdraw(account:string,wallet:IWalletProvider){
+    async withdraw(account: string, wallet: IWalletProvider) {
         const txParams = {
-        from: account,
-        to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
-        data: "0x3f48991400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
-        value: "0x0"
+            from: account,
+            to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+            data: "0x3f48991400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
+            value: "0x0"
         };
         await wallet.sendTransaction(txParams);
     }
