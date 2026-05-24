@@ -31,8 +31,11 @@ export class HallView extends core.UIView {
 
     onLoginResp(event: string, data: any) {
         console.log("登录响应:", data);
-        // core.scene.changeView(GameView, (view: GameView) => {
-        // });
+        core.data.userInfo.address = data?.address;
+        core.data.userInfo.access_token = data?.access_token;
+        core.data.userInfo.balance = data?.balance;
+        core.scene.changeView(GameView, (view: GameView) => {
+        });
     }
 
     async onButtonClick(event: Event, customData: string) {

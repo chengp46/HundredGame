@@ -1,8 +1,8 @@
 
 export class UserInfo {
-    account: string;
-    bonus_credits: number;
-    real_money: number;
+    address: string;  // 钱包地址
+    access_token: string; // token
+    balance: any;  // 余额
 }
 
 export class GlobalData {
