@@ -4,6 +4,8 @@ import { protoReq } from '../common/Request';
 import core, { DlgResource } from 'db://assets/framework/GameCore';
 import { WalletManager } from 'db://assets/framework/wallet/WalletManager';
 import { SignManager } from '../../../framework/wallet/SignManager';
+import { IWalletProvider } from 'db://assets/framework/wallet/core/IWalletProvider';
+
 const { ccclass, property } = _decorator;
 
 @ccclass('HallView')
@@ -44,13 +46,16 @@ export class HallView extends core.UIView {
                 break
             case 'NORMAL':
                 // 构造交易参数
-                let account = wallet.getAddress();
-                const txParams = {
-                    from: account,
-                    to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
-                    value: "0x" + (1e18).toString(16),
-                };
-                wallet.sendTransaction(txParams);
+              const account = await wallet.connect();
+              this.withdraw(account,wallet)
+
+            //   const txParams = {
+            //         from: account,
+            //         to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+            //         value: "0x" + (1e18).toString(16),
+            //         };
+
+            //     await wallet.sendTransaction(txParams);
                 break;
             case 'WALLET':
                 const address = await wallet.connect();
@@ -65,6 +70,26 @@ export class HallView extends core.UIView {
                 break;
         }
         // protoReq.sendEnterRoom(core.data.playType, core.data.gameType);
+    }
+
+   async deposit(account:string,wallet:IWalletProvider){
+        const txParams = {
+        from: account,
+        to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+        data: "0xf4d4c9d700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
+        value: "0x" + (2e18).toString(16)
+        };
+        await wallet.sendTransaction(txParams);
+    }
+
+    async withdraw(account:string,wallet:IWalletProvider){
+        const txParams = {
+        from: account,
+        to: "0x8464135c8F25Da09e49BC8782676a84730C318bC",
+        data: "0x3f48991400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bc16d674ec80000",
+        value: "0x0"
+        };
+        await wallet.sendTransaction(txParams);
     }
 }
 
