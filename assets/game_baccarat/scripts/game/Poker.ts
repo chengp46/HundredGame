@@ -19,11 +19,11 @@ export class Poker extends Component {
         this.pokerSuit = suit;
         this.pokerPoint = point;
         if (suit == 0 || point == 0) {
-            this.poker.spriteFrame = await core.loader.load("texture/game/poker/card_back/spriteFrame", SpriteFrame, "game_baccarat");
+            this.poker.spriteFrame = await core.loader.loadAsset("game_baccarat", "texture/game/poker/card_back/spriteFrame", SpriteFrame);
         } else {
             let pokerpoint = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
             let card = `${pokerpoint[point - 1]}${suit}`
-            this.poker.spriteFrame = await core.loader.load(`texture/game/poker/${card}/spriteFrame`, SpriteFrame, "game_baccarat");
+            this.poker.spriteFrame = await core.loader.loadAsset("game_baccarat", `texture/game/poker/${card}/spriteFrame`, SpriteFrame);
         }
     }
 }

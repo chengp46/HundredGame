@@ -58,7 +58,8 @@ export class GameView extends core.UIView {
     onButtonClick(event: Event, customData: string) {
         switch (customData) {
             case 'exitGame':
-                protoReq.leaveRoomReq();
+                //protoReq.leaveRoomReq();
+                this.dealArea.dealCard();
                 break
             default:
                 break;

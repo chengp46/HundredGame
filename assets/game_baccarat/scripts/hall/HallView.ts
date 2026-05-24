@@ -33,8 +33,8 @@ export class HallView extends core.UIView {
 
     onLoginResp(event: string, data: any) {
         console.log("登录响应:", data);
-        core.scene.changeView(GameView, (view: GameView) => {
-        });
+        // core.scene.changeView(GameView, (view: GameView) => {
+        // });
     }
 
     async onButtonClick(event: Event, customData: string) {
@@ -43,6 +43,8 @@ export class HallView extends core.UIView {
             case 'GUEST':
                 core.data.playType = 1;
                 core.data.gameType = 2;
+                core.scene.changeView(GameView, (view: GameView) => {
+                });
                 break
             case 'NORMAL':
                 // 构造交易参数

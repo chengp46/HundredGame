@@ -1,9 +1,11 @@
+import { Component } from "cc";
+
 export class Utils {
 
     // 延迟sec秒执行
-    static sleep(sec: number) {
+    static delay(comp: Component, sec: number) {
         return new Promise<void>(resolve => {
-            setTimeout(resolve, sec * 1000);
+            comp.scheduleOnce(resolve, sec);
         });
     }
 
